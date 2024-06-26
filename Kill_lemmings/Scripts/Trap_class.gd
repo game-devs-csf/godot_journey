@@ -4,6 +4,7 @@ extends Node2D
 
 @export var healt : int
 @export var Damage : int
+var Trap_scene = load("res://Scenes/trap.tscn")
 
 var draggable=false
 var is_inside_dropable=false 
@@ -27,8 +28,13 @@ func _process(delta):
 			Global.dragging=false
 			var tween = get_tree().create_tween()
 			if is_inside_dropable or counter_area!= 0:
-				tween.tween_property(self,"position", position_ref, 0.2).set_ease(Tween.EASE_OUT)
+				
+				var instance = Trap_scene.instantiate()
+				instance.global_position=position_ref
+				$"..".add_child(instance)
+				tween.tween_property(self,"position", initial_pos, 0.2).set_ease(Tween.EASE_OUT)
 				counter_area = 0
+				
 			else:
 				tween.tween_property(self,"position", initial_pos, 0.2).set_ease(Tween.EASE_OUT)
 			

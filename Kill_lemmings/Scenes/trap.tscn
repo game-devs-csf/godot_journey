@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d0jtbmhyhhljc" path="res://Assets/Sprites/brackeys_platformer_assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_ars7j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8kk2"]
-size = Vector2(23, 22)
+size = Vector2(28.5, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6kxo5"]
 atlas = ExtResource("2_ars7j")
@@ -31,12 +31,12 @@ collision_mask = 5
 script = ExtResource("2_4nxxa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1, 1)
+position = Vector2(1.75, 4)
 shape = SubResource("RectangleShape2D_s8kk2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.5, -0.00205231)
-scale = Vector2(1.4375, 1.37893)
+position = Vector2(2.5, 2.87571)
+scale = Vector2(1.8125, 1.73865)
 sprite_frames = SubResource("SpriteFrames_y3rkc")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
