@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://v4brylap2hpi"]
 
-[ext_resource type="Script" path="res://Scripts/Dropable.gd" id="1_dgmmp"]
+[ext_resource type="Script" path="res://Scripts/Traps/Dropable.gd" id="1_dgmmp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qam76"]
 size = Vector2(27, 26)

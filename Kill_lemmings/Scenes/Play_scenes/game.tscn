@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://ci10pp2t74yqw"]
 
-[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_1uist"]
-[ext_resource type="Texture2D" uid="uid://cckcet6kmqf2o" path="res://Assets/Tilemaps/tilemap.png" id="2_afypn"]
-[ext_resource type="PackedScene" path="res://Scenes/Drop_space.tscn" id="4_egf3u"]
-[ext_resource type="PackedScene" path="res://Scenes/trap.tscn" id="5_8tgyc"]
+[ext_resource type="Script" path="res://Scripts/Managers/game_manager.gd" id="1_e0osj"]
+[ext_resource type="Texture2D" uid="uid://cckcet6kmqf2o" path="res://Assets/Tilemaps/tilemap.png" id="2_g624u"]
+[ext_resource type="PackedScene" uid="uid://v4brylap2hpi" path="res://Scenes/Traps/Drop_space.tscn" id="3_cq7so"]
+[ext_resource type="PackedScene" uid="uid://mm8sgtv5rkbu" path="res://Scenes/Traps/trap.tscn" id="4_pf12y"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ba00c"]
 source_geometry_group_name = &"navigation_polygon_source_group"
@@ -24,7 +24,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wt8ty"]
-texture = ExtResource("2_afypn")
+texture = ExtResource("2_g624u")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -175,7 +175,7 @@ _data = {
 point_count = 5
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_1uist")
+script = ExtResource("1_e0osj")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_02ln7")
@@ -196,16 +196,16 @@ rotation = 1.56527
 [node name="EnemySpawner" type="Timer" parent="."]
 autostart = true
 
-[node name="StaticBody2D" parent="." instance=ExtResource("4_egf3u")]
+[node name="StaticBody2D" parent="." instance=ExtResource("3_cq7so")]
 position = Vector2(232, -149)
 
-[node name="StaticBody2D2" parent="." instance=ExtResource("4_egf3u")]
+[node name="StaticBody2D2" parent="." instance=ExtResource("3_cq7so")]
 position = Vector2(266, -150)
 
-[node name="StaticBody2D3" parent="." instance=ExtResource("4_egf3u")]
+[node name="StaticBody2D3" parent="." instance=ExtResource("3_cq7so")]
 position = Vector2(301, -150)
 
-[node name="Trap" parent="." instance=ExtResource("5_8tgyc")]
+[node name="Trap" parent="." instance=ExtResource("4_pf12y")]
 position = Vector2(407, 37)
 
 [connection signal="timeout" from="EnemySpawner" to="." method="_on_timer_timeout"]
