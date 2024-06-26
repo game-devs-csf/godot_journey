@@ -10,4 +10,4 @@ func _process(delta):
 	super._process(delta)
 
 func _physics_process(delta):
-	pass
+	super._physics_process(delta)
