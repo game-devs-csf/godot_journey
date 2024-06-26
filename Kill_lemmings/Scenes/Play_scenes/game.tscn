@@ -1,13 +1,30 @@
-[gd_scene load_steps=8 format=3 uid="uid://csarsg8rx7bca"]
+[gd_scene load_steps=14 format=3 uid="uid://ci10pp2t74yqw"]
 
-[ext_resource type="Script" path="res://Scenes/game_manager.gd" id="1_1uist"]
-[ext_resource type="PackedScene" uid="uid://dhmglr0p6sbop" path="res://Scenes/Characters/goblin.tscn" id="1_fu0yw"]
-[ext_resource type="Texture2D" uid="uid://cckcet6kmqf2o" path="res://Assets/Tilemaps/tilemap.png" id="2_afypn"]
-[ext_resource type="PackedScene" uid="uid://v4brylap2hpi" path="res://Scenes/Drop_space.tscn" id="4_egf3u"]
-[ext_resource type="PackedScene" uid="uid://mm8sgtv5rkbu" path="res://Scenes/trap.tscn" id="5_8tgyc"]
+[ext_resource type="Script" path="res://Scripts/Managers/game_manager.gd" id="1_e0osj"]
+[ext_resource type="Texture2D" uid="uid://cckcet6kmqf2o" path="res://Assets/Tilemaps/tilemap.png" id="2_g624u"]
+[ext_resource type="PackedScene" uid="uid://v4brylap2hpi" path="res://Scenes/Traps/Drop_space.tscn" id="3_cq7so"]
+[ext_resource type="PackedScene" uid="uid://mm8sgtv5rkbu" path="res://Scenes/Traps/trap.tscn" id="4_pf12y"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ba00c"]
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dwq1q"]
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dmsva"]
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_u37s2"]
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_p0o4v"]
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_lfbr0"]
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wt8ty"]
-texture = ExtResource("2_afypn")
+texture = ExtResource("2_g624u")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -57,11 +74,17 @@ texture = ExtResource("2_afypn")
 10:3/0 = 0
 11:3/0 = 0
 0:4/0 = 0
+0:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ba00c")
 1:4/0 = 0
+1:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_dwq1q")
 2:4/0 = 0
+2:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_dmsva")
 3:4/0 = 0
+3:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_u37s2")
 4:4/0 = 0
+4:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_p0o4v")
 5:4/0 = 0
+5:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_lfbr0")
 6:4/0 = 0
 7:4/0 = 0
 8:4/0 = 0
@@ -142,10 +165,17 @@ texture = ExtResource("2_afypn")
 11:10/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_02ln7"]
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_wt8ty")
 
+[sub_resource type="Curve2D" id="Curve2D_tqarl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 683, -438, 0, 0, 0, 0, 688, 466, 0, 0, 0, 0, -701, 464, 0, 0, 0, 0, -705, -441, 0, 0, 0, 0, 683, -438)
+}
+point_count = 5
+
 [node name="Game" type="Node2D"]
-script = ExtResource("1_1uist")
+script = ExtResource("1_e0osj")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_02ln7")
@@ -154,17 +184,28 @@ layer_0/tile_data = PackedInt32Array(-589838, 0, 4, -524302, 0, 4, -458766, 0, 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Goblin" parent="." instance=ExtResource("1_fu0yw")]
-target = Vector2(400, 50)
+[node name="EnemySpawnLocations" type="Path2D" parent="."]
+curve = SubResource("Curve2D_tqarl")
 
-[node name="StaticBody2D" parent="." instance=ExtResource("4_egf3u")]
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemySpawnLocations"]
+position = Vector2(683, -438)
+rotation = 1.56527
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="EnemySpawner" type="Timer" parent="."]
+autostart = true
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_cq7so")]
 position = Vector2(232, -149)
 
-[node name="StaticBody2D2" parent="." instance=ExtResource("4_egf3u")]
+[node name="StaticBody2D2" parent="." instance=ExtResource("3_cq7so")]
 position = Vector2(266, -150)
 
-[node name="StaticBody2D3" parent="." instance=ExtResource("4_egf3u")]
+[node name="StaticBody2D3" parent="." instance=ExtResource("3_cq7so")]
 position = Vector2(301, -150)
 
-[node name="Trap" parent="." instance=ExtResource("5_8tgyc")]
+[node name="Trap" parent="." instance=ExtResource("4_pf12y")]
 position = Vector2(407, 37)
+
+[connection signal="timeout" from="EnemySpawner" to="." method="_on_timer_timeout"]

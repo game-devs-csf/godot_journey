@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://d0khbdyed0e8x"]
 
-[ext_resource type="PackedScene" uid="uid://mm8sgtv5rkbu" path="res://Scenes/trap.tscn" id="1_gawen"]
-[ext_resource type="PackedScene" uid="uid://v4brylap2hpi" path="res://Scenes/Drop_space.tscn" id="2_yomv6"]
+[ext_resource type="PackedScene" uid="uid://mm8sgtv5rkbu" path="res://Scenes/Traps/trap.tscn" id="1_gawen"]
+[ext_resource type="PackedScene" uid="uid://v4brylap2hpi" path="res://Scenes/Traps/Drop_space.tscn" id="2_yomv6"]
 [ext_resource type="Texture2D" uid="uid://d0jtbmhyhhljc" path="res://Assets/Sprites/brackeys_platformer_assets/brackeys_platformer_assets/sprites/world_tileset.png" id="3_iu3sr"]
-[ext_resource type="PackedScene" uid="uid://6430fk5nmedk" path="res://Scenes/Enemy_Body.tscn" id="4_g5pdr"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemy_Body.tscn" id="4_g5pdr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3acx2"]
 texture = ExtResource("3_iu3sr")

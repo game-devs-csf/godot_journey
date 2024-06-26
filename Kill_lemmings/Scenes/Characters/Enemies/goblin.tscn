@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://dhmglr0p6sbop"]
 
-[ext_resource type="Script" path="res://Scripts/Goblin.gd" id="1_vb0un"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Goblin.gd" id="1_vb0un"]
 [ext_resource type="Texture2D" uid="uid://ds01thebmv1vw" path="res://Assets/Sprites/Goblins/Troops/TNT/Red/TNT_Red.png" id="1_xtd48"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mduwb"]
@@ -151,7 +151,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Run",
-"speed": 10.0
+"speed": 12.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dmcna"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://mm8sgtv5rkbu"]
 
-[ext_resource type="Script" path="res://Scripts/Trap_class.gd" id="1_eqvsi"]
-[ext_resource type="Script" path="res://Scripts/Trap_controller.gd" id="2_4nxxa"]
+[ext_resource type="Script" path="res://Scripts/Traps/Trap_class.gd" id="1_eqvsi"]
+[ext_resource type="Script" path="res://Scripts/Traps/Trap_controller.gd" id="2_4nxxa"]
 [ext_resource type="Texture2D" uid="uid://d0jtbmhyhhljc" path="res://Assets/Sprites/brackeys_platformer_assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_ars7j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8kk2"]

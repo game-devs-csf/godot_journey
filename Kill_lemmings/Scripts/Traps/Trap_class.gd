@@ -4,7 +4,7 @@ extends Node2D
 
 @export var healt : int
 @export var Damage : int
-var Trap_scene = load("res://Scenes/trap.tscn")
+var Trap_scene = load("res://Scenes/Traps/trap.tscn")
 
 var draggable=false
 var is_inside_dropable=false 

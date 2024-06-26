@@ -1,14 +1,14 @@
 class_name Mob 
 extends CharacterBody2D
-
 ## Base class for the enemies
+
+enum state {Idle, Running, Attacking}
+enum directions {Left, Right}
 
 @export var mob_name = "Mob"
 @onready var _animated_sprite = $AnimatedSprite2D
 @export var target : Vector2
 @export var max_hp := 10
-
-enum state {Idle, Running, Attacking}
 
 var hp : int = 10:
 	set(value): hp = clamp(value, 0, max_hp)
@@ -17,6 +17,14 @@ var _current_state : state = state.Idle:
 	set(value):
 		_current_state = value
 		set_animation()
+
+var _current_direction : directions = directions.Right:
+	set(value):
+		_current_direction = value
+		if value == directions.Left:
+			$AnimatedSprite2D.flip_h = true
+		else:
+			$AnimatedSprite2D.flip_h = false
 		
 var att : int = 1
 var def : int = 5
@@ -41,6 +49,13 @@ func set_animation() -> void:
 	
 func move_towards_target() -> void:
 	var direction = global_position.direction_to(target)
+	
+	if direction.x < 0:
+		_current_direction = directions.Left
+		
+	if direction.x > 0:
+		_current_direction = directions.Right
+		
 	velocity = direction * speed
 	move_and_slide()
 	
