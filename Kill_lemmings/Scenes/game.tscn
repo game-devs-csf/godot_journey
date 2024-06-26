@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://csarsg8rx7bca"]
+[gd_scene load_steps=8 format=3 uid="uid://csarsg8rx7bca"]
 
 [ext_resource type="Script" path="res://Scenes/game_manager.gd" id="1_1uist"]
 [ext_resource type="PackedScene" uid="uid://dhmglr0p6sbop" path="res://Scenes/Characters/goblin.tscn" id="1_fu0yw"]
 [ext_resource type="Texture2D" uid="uid://cckcet6kmqf2o" path="res://Assets/Tilemaps/tilemap.png" id="2_afypn"]
+[ext_resource type="PackedScene" uid="uid://v4brylap2hpi" path="res://Scenes/Drop_space.tscn" id="4_egf3u"]
+[ext_resource type="PackedScene" uid="uid://mm8sgtv5rkbu" path="res://Scenes/trap.tscn" id="5_8tgyc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wt8ty"]
 texture = ExtResource("2_afypn")
@@ -154,3 +156,15 @@ layer_0/tile_data = PackedInt32Array(-589838, 0, 4, -524302, 0, 4, -458766, 0, 4
 
 [node name="Goblin" parent="." instance=ExtResource("1_fu0yw")]
 target = Vector2(400, 50)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_egf3u")]
+position = Vector2(232, -149)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("4_egf3u")]
+position = Vector2(266, -150)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("4_egf3u")]
+position = Vector2(301, -150)
+
+[node name="Trap" parent="." instance=ExtResource("5_8tgyc")]
+position = Vector2(407, 37)
