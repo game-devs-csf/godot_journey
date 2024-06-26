@@ -158,7 +158,7 @@ animations = [{
 radius = 14.0
 height = 40.0
 
-[node name="Goblin" type="CharacterBody2D"]
+[node name="Goblin" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_pi284")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
