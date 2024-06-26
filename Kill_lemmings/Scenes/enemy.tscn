@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://ce7ugdap4qs7t"]
+
+[ext_resource type="Script" path="res://Scripts/enemy_function.gd" id="1_giow7"]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_toosw"]
+[ext_resource type="Texture2D" uid="uid://cg1dcc7lb13eg" path="res://Assets/Sprites/brackeys_platformer_assets/brackeys_platformer_assets/sprites/slime_green.png" id="2_ropc3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tm7vp"]
+size = Vector2(10, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3cvk"]
+atlas = ExtResource("2_ropc3")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wf6yp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3cvk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="Node2D" groups=["Enemy"]]
+script = ExtResource("1_giow7")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("1_toosw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_tm7vp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_wf6yp")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

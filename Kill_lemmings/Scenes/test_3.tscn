@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://v4brylap2hpi"]
+
+[ext_resource type="Script" path="res://Scripts/Dropable.gd" id="1_dgmmp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qam76"]
+size = Vector2(22.375, 22)
+
+[node name="StaticBody2D" type="StaticBody2D" groups=["Dropable"]]
+collision_layer = 4
+script = ExtResource("1_dgmmp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.1875, 0)
+shape = SubResource("RectangleShape2D_qam76")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -11.0
+offset_right = 12.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.254685, 0.250281, 0.25683, 1)
