@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://csarsg8rx7bca"]
+[gd_scene load_steps=6 format=3 uid="uid://ci10pp2t74yqw"]
 
-[ext_resource type="Script" path="res://Scenes/game_manager.gd" id="1_1uist"]
-[ext_resource type="PackedScene" uid="uid://dhmglr0p6sbop" path="res://Scenes/Characters/goblin.tscn" id="1_fu0yw"]
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_1uist"]
 [ext_resource type="Texture2D" uid="uid://cckcet6kmqf2o" path="res://Assets/Tilemaps/tilemap.png" id="2_afypn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wt8ty"]
@@ -142,6 +141,12 @@ texture = ExtResource("2_afypn")
 [sub_resource type="TileSet" id="TileSet_02ln7"]
 sources/0 = SubResource("TileSetAtlasSource_wt8ty")
 
+[sub_resource type="Curve2D" id="Curve2D_tqarl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 683, -438, 0, 0, 0, 0, 688, 466, 0, 0, 0, 0, -701, 464, 0, 0, 0, 0, -705, -441, 0, 0, 0, 0, 683, -438)
+}
+point_count = 5
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_1uist")
 
@@ -152,5 +157,16 @@ layer_0/tile_data = PackedInt32Array(-589838, 0, 4, -524302, 0, 4, -458766, 0, 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Goblin" parent="." instance=ExtResource("1_fu0yw")]
-target = Vector2(400, 50)
+[node name="EnemySpawnLocations" type="Path2D" parent="."]
+curve = SubResource("Curve2D_tqarl")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemySpawnLocations"]
+position = Vector2(683, -438)
+rotation = 1.56527
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="EnemySpawner" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="EnemySpawner" to="." method="_on_timer_timeout"]
