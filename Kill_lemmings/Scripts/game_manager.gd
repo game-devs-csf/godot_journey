@@ -10,7 +10,7 @@ func _ready():
 	load_enemies()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func load_enemies():
@@ -22,6 +22,7 @@ func spawn_mobs():
 	var mob = _enemy_references[randi() % _enemy_references.size()].instantiate()
 	mob.target = Vector2(0,0)
 	mob.global_position = $EnemySpawnLocations/PathFollow2D.global_position
+	_enemies_in_scene.append(mob)
 	$Enemies.add_child(mob)
 
 func _on_timer_timeout():

@@ -1,7 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://ci10pp2t74yqw"]
+[gd_scene load_steps=12 format=3 uid="uid://ci10pp2t74yqw"]
 
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_1uist"]
 [ext_resource type="Texture2D" uid="uid://cckcet6kmqf2o" path="res://Assets/Tilemaps/tilemap.png" id="2_afypn"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ba00c"]
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dwq1q"]
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dmsva"]
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_u37s2"]
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_p0o4v"]
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_lfbr0"]
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wt8ty"]
 texture = ExtResource("2_afypn")
@@ -54,11 +72,17 @@ texture = ExtResource("2_afypn")
 10:3/0 = 0
 11:3/0 = 0
 0:4/0 = 0
+0:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ba00c")
 1:4/0 = 0
+1:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_dwq1q")
 2:4/0 = 0
+2:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_dmsva")
 3:4/0 = 0
+3:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_u37s2")
 4:4/0 = 0
+4:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_p0o4v")
 5:4/0 = 0
+5:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_lfbr0")
 6:4/0 = 0
 7:4/0 = 0
 8:4/0 = 0
@@ -139,6 +163,7 @@ texture = ExtResource("2_afypn")
 11:10/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_02ln7"]
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_wt8ty")
 
 [sub_resource type="Curve2D" id="Curve2D_tqarl"]

@@ -1,15 +1,14 @@
 class_name Mob 
 extends CharacterBody2D
-
 ## Base class for the enemies
+
+enum state {Idle, Running, Attacking}
+enum directions {Left, Right}
 
 @export var mob_name = "Mob"
 @onready var _animated_sprite = $AnimatedSprite2D
 @export var target : Vector2
 @export var max_hp := 10
-
-enum state {Idle, Running, Attacking}
-enum directions {Left, Right}
 
 var hp : int = 10:
 	set(value): hp = clamp(value, 0, max_hp)
