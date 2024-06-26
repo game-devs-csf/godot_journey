@@ -10,6 +10,8 @@ enum directions {Left, Right}
 @export var target : Vector2
 @export var max_hp := 10
 
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 var hp : int = 10:
 	set(value): hp = clamp(value, 0, max_hp)
 	
@@ -28,7 +30,7 @@ var _current_direction : directions = directions.Right:
 		
 var att : int = 1
 var def : int = 5
-var speed : float = 300
+var speed : float = 3000
 var dead : bool = false
 var on_target : bool = false
 var _animations : Array[String] = ['Idle', 'Run', 'Attack']
@@ -36,18 +38,26 @@ var _animations : Array[String] = ['Idle', 'Run', 'Attack']
 func _ready():
 	set_animation()
 	
-func _process(delta):
+func _process(_delta):
 	if !on_target:
 		if _current_state != state.Running:	_current_state = state.Running
-		move_towards_target()
+		
+		print('Position: %s Target: %s' % [global_position, target])
 		if global_position.distance_to(target) <= 3:
 			on_target = true
 			_current_state = state.Idle
+			
+func _physics_process(delta):
+	# Add the gravity.
+	#if not is_on_floor():
+	velocity.y += gravity * delta
+	
+	move_towards_target(delta)
 
 func set_animation() -> void:
 	_animated_sprite.play(_animations[_current_state])
 	
-func move_towards_target() -> void:
+func move_towards_target(delta) -> void:
 	var direction = global_position.direction_to(target)
 	
 	if direction.x < 0:
@@ -56,7 +66,7 @@ func move_towards_target() -> void:
 	if direction.x > 0:
 		_current_direction = directions.Right
 		
-	velocity = direction * speed
+	velocity.x = direction.x * speed * delta
 	move_and_slide()
 	
 func take_damage(value : int) -> void:
