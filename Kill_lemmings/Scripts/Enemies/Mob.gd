@@ -12,15 +12,12 @@ enum directions {Left, Right}
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var _animated_sprite = $AnimatedSprite2D
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
 var hp : int = 10:
 	set(value): hp = clamp(value, 0, max_hp)
 	
 var _current_state : state = state.Idle:
 	set(value):
 		_current_state = value
-		print("Changing to %s" % value)
 		set_animation()
 
 var _current_direction : directions = directions.Right:
@@ -31,9 +28,10 @@ var _current_direction : directions = directions.Right:
 		else:
 			$AnimatedSprite2D.flip_h = false
 		
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var att : int = 1
 var def : int = 5
-var movement_speed : float = 300
+var movement_speed : float = 2000
 var dead : bool = false
 var on_target : bool = false
 var _animations : Array[String] = ['Idle', 'Run', 'Attack']
@@ -41,10 +39,9 @@ var _animations : Array[String] = ['Idle', 'Run', 'Attack']
 func _ready():
 	set_animation()
 	
-	# These values need to be adjusted for the actor's speed
-	# and the navigation layout.
-	navigation_agent.path_desired_distance = 4.0
-	navigation_agent.target_desired_distance = 4.0
+	# These values need to be adjusted for the actor's speed the navigation layout.
+	#navigation_agent.path_desired_distance = 4.0
+	#navigation_agent.target_desired_distance = 4.0
 
 	# Make sure to not await during _ready.
 	call_deferred("actor_setup")
@@ -66,26 +63,16 @@ func _process(_delta):
 	#print('Position: %s Target: %s' % [global_position, target_position])
 		#if global_position.distance_to(target_position) <= 3:
 			#on_target = true
-			#_current_state = state.Idle
-	print("Position: %s Next position: %s Finished %s Distance %s" % [global_position, navigation_agent.get_next_path_position(), str(navigation_agent.is_navigation_finished()), global_position.distance_to(navigation_agent.get_next_path_position())])
-	if _current_state != state.Running:	_current_state = state.Running
-
-func change_direction(_target: Vector2):
-	var direction = global_position.direction_to(_target)
-
-	if direction.x < 0:
-		_current_direction = directions.Left
-		
-	if direction.x > 0:
-		_current_direction = directions.Right
-		
-			
-func _physics_process(delta):
-	# Add the gravity.
+			#_current_state = state.Idle	
 	if navigation_agent.is_navigation_finished():
 		on_target = true
-		print("Finished")
 		if _current_state != state.Idle: _current_state = state.Idle
+		return
+		
+	if _current_state != state.Running:	_current_state = state.Running
+			
+func _physics_process(delta):
+	if navigation_agent.is_navigation_finished():
 		return
 	
 	if not is_on_floor():
@@ -98,12 +85,21 @@ func _physics_process(delta):
 
 	change_direction(next_path_position)
 	
-	velocity.x = current_agent_position.direction_to(next_path_position).x * movement_speed
+	velocity.x = current_agent_position.direction_to(next_path_position).x * movement_speed * delta
 	move_and_slide()
 
 func set_animation() -> void:
 	_animated_sprite.play(_animations[_current_state])
 	
+func change_direction(_target: Vector2):
+	var direction = global_position.direction_to(_target)
+
+	if direction.x < 0:
+		_current_direction = directions.Left
+		
+	if direction.x > 0:
+		_current_direction = directions.Right
+			
 func move_towards_target(delta) -> void:
 	var direction = global_position.direction_to(target_position)
 	
