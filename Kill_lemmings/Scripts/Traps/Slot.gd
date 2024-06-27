@@ -25,7 +25,7 @@ func _can_drop_data(_pos, data):
 func _drop_data(_pos, data):
 		
 		var instance=scene.instantiate()
-		var pos_ref = get_global_position()
+		var pos_ref = get_global_position() + Vector2(20, 20)
 		instance.global_position=pos_ref
 		add_sibling(instance)
 		
