@@ -3,4 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://cmn4v04ljcrsb" path="res://Scenes/Traps/slot_container.tscn" id="1_4oeqw"]
 
 [node name="Drop_slot" groups=["Dropable"] instance=ExtResource("1_4oeqw")]
+offset_left = -426.0
+offset_top = -315.0
+offset_right = -386.0
+offset_bottom = -275.0
 script = null

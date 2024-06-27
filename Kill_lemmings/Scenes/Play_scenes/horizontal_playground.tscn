@@ -20,6 +20,41 @@ target = Vector2(-116, -170)
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.15, 1.15)
 
+[node name="GridContainer" type="GridContainer" parent="Camera2D"]
+offset_left = 206.0
+offset_top = 115.0
+offset_right = 435.0
+offset_bottom = 233.0
+columns = 4
+
+[node name="Slot_container2" parent="Camera2D/GridContainer" instance=ExtResource("4_bf0uf")]
+layout_mode = 2
+slot_type = 2
+
+[node name="Slot_container5" parent="Camera2D/GridContainer" instance=ExtResource("4_bf0uf")]
+layout_mode = 2
+slot_type = 2
+
+[node name="Slot_container3" parent="Camera2D/GridContainer" instance=ExtResource("4_bf0uf")]
+layout_mode = 2
+slot_type = 2
+
+[node name="Slot_container4" parent="Camera2D/GridContainer" instance=ExtResource("4_bf0uf")]
+layout_mode = 2
+slot_type = 2
+
+[node name="Slot_container" parent="Camera2D" instance=ExtResource("4_bf0uf")]
+offset_left = 115.0
+offset_top = -54.0
+offset_right = 155.0
+offset_bottom = -14.0
+
+[node name="Slot_container2" parent="Camera2D" instance=ExtResource("4_bf0uf")]
+offset_left = 183.0
+offset_top = -56.0
+offset_right = 223.0
+offset_bottom = -16.0
+
 [node name="StaticBody2D" parent="." instance=ExtResource("3_p1dir")]
 position = Vector2(-192, -185)
 
@@ -31,38 +66,3 @@ position = Vector2(-129, -186)
 
 [node name="StaticBody2D4" parent="." instance=ExtResource("3_p1dir")]
 position = Vector2(-99, -187)
-
-[node name="GridContainer" type="GridContainer" parent="."]
-offset_left = 215.0
-offset_top = 132.0
-offset_right = 444.0
-offset_bottom = 250.0
-columns = 4
-
-[node name="Slot_container2" parent="GridContainer" instance=ExtResource("4_bf0uf")]
-layout_mode = 2
-slot_type = 2
-
-[node name="Slot_container5" parent="GridContainer" instance=ExtResource("4_bf0uf")]
-layout_mode = 2
-slot_type = 2
-
-[node name="Slot_container3" parent="GridContainer" instance=ExtResource("4_bf0uf")]
-layout_mode = 2
-slot_type = 2
-
-[node name="Slot_container4" parent="GridContainer" instance=ExtResource("4_bf0uf")]
-layout_mode = 2
-slot_type = 2
-
-[node name="Slot_container" parent="." instance=ExtResource("4_bf0uf")]
-offset_left = 115.0
-offset_top = -54.0
-offset_right = 155.0
-offset_bottom = -14.0
-
-[node name="Slot_container2" parent="." instance=ExtResource("4_bf0uf")]
-offset_left = 183.0
-offset_top = -56.0
-offset_right = 223.0
-offset_bottom = -16.0
