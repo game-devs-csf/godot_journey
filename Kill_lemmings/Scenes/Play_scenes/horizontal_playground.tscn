@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://ibj4j60f70wc" path="res://Assets/Tilemaps/placeholder.tres" id="1_c8kf4"]
 [ext_resource type="PackedScene" uid="uid://dhmglr0p6sbop" path="res://Scenes/Characters/Enemies/goblin.tscn" id="2_pnlx1"]
 [ext_resource type="PackedScene" uid="uid://v4brylap2hpi" path="res://Scenes/Traps/Drop_space.tscn" id="3_p1dir"]
-[ext_resource type="PackedScene" uid="uid://mm8sgtv5rkbu" path="res://Scenes/Traps/trap.tscn" id="4_ri51y"]
+[ext_resource type="PackedScene" uid="uid://cmn4v04ljcrsb" path="res://Scenes/Traps/slot_container.tscn" id="4_bf0uf"]
 
 [node name="HorizontalPlayground" type="Node2D"]
 
@@ -32,4 +32,37 @@ position = Vector2(-129, -186)
 [node name="StaticBody2D4" parent="." instance=ExtResource("3_p1dir")]
 position = Vector2(-99, -187)
 
-[node name="Trap" parent="." instance=ExtResource("4_ri51y")]
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 215.0
+offset_top = 132.0
+offset_right = 444.0
+offset_bottom = 250.0
+columns = 4
+
+[node name="Slot_container2" parent="GridContainer" instance=ExtResource("4_bf0uf")]
+layout_mode = 2
+slot_type = 2
+
+[node name="Slot_container5" parent="GridContainer" instance=ExtResource("4_bf0uf")]
+layout_mode = 2
+slot_type = 2
+
+[node name="Slot_container3" parent="GridContainer" instance=ExtResource("4_bf0uf")]
+layout_mode = 2
+slot_type = 2
+
+[node name="Slot_container4" parent="GridContainer" instance=ExtResource("4_bf0uf")]
+layout_mode = 2
+slot_type = 2
+
+[node name="Slot_container" parent="." instance=ExtResource("4_bf0uf")]
+offset_left = 115.0
+offset_top = -54.0
+offset_right = 155.0
+offset_bottom = -14.0
+
+[node name="Slot_container2" parent="." instance=ExtResource("4_bf0uf")]
+offset_left = 183.0
+offset_top = -56.0
+offset_right = 223.0
+offset_bottom = -16.0

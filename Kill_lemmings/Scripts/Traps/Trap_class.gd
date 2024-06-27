@@ -4,7 +4,8 @@ extends Node2D
 
 @export var healt : int
 @export var Damage : int
-var Trap_scene = load("res://Scenes/Traps/trap.tscn")
+@export var Scene : String
+var Trap_scene = load("res://Scenes/Traps/pozo.tscn")
 
 var draggable=false
 var is_inside_dropable=false 
@@ -27,7 +28,7 @@ func _process(delta):
 		elif Input.is_action_just_released("click"):
 			Global.dragging=false
 			var tween = get_tree().create_tween()
-			if is_inside_dropable or counter_area!= 0:
+			if is_inside_dropable or not positions.is_empty():
 				
 				var instance = Trap_scene.instantiate()
 				instance.global_position=positions[-1]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://5j5o21y737vr"]
+
+[ext_resource type="PackedScene" uid="uid://cmn4v04ljcrsb" path="res://Scenes/Traps/slot_container.tscn" id="1_4oeqw"]
+
+[node name="Drop_slot" groups=["Dropable"] instance=ExtResource("1_4oeqw")]
+script = null
