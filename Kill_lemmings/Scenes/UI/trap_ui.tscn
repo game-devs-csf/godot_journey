@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bedf3rqeeg43r" path="res://Scenes/Traps/slot_container.tscn" id="1_864pl"]
 [ext_resource type="Texture2D" uid="uid://ck15ci5d5p7pa" path="res://Assets/Sprites/Traps/16x16 traps.png" id="2_8sj6h"]
-[ext_resource type="Texture2D" uid="uid://d3ht7diwd6j1t" path="res://Assets/Pozo_fondo.png" id="2_fu1hw"]
+[ext_resource type="Texture2D" uid="uid://bfrew81sm6qf3" path="res://Assets/Sprites/Traps/Pozo_fondo.png" id="2_g5lqs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kqftw"]
 atlas = ExtResource("2_8sj6h")
@@ -41,7 +41,7 @@ layout_mode = 2
 Type = "Pit"
 
 [node name="TextureRect" parent="Control/GridContainer/Slot_container5" index="0"]
-texture = ExtResource("2_fu1hw")
+texture = ExtResource("2_g5lqs")
 
 [node name="Slot_container6" parent="Control/GridContainer" instance=ExtResource("1_864pl")]
 layout_mode = 2
