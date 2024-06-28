@@ -2,7 +2,14 @@ class_name Trap
 
 extends Node2D 
 
-@export var healt : int
+signal trap_destroyed
+
+@export var health : int = 10:
+	set(value):
+		health = clamp(value, 0, 100)
+		if health == 0:
+			trap_destroyed.emit()
+	
 @export var Damage : int
 var Trap_scene = load("res://Scenes/Traps/trap.tscn")
 
@@ -38,17 +45,12 @@ func _process(delta):
 			else:
 				tween.tween_property(self,"position", initial_pos, 0.2).set_ease(Tween.EASE_OUT)
 			
-		
-
-
 func _on_area_2d_body_entered(body):
 	if body.is_in_group('Dropable') :
 		is_inside_dropable=true
 		counter_area=1
 		body.modulate=Color(Color.BLACK,1)
 		positions.append(body.position)
-		
-
 
 func _on_area_2d_body_exited(body):
 	if body.is_in_group('Dropable') :
@@ -59,17 +61,15 @@ func _on_area_2d_body_exited(body):
 		else:
 			positions.pop_back()
 		
-		
-		
-
 func _on_area_2d_mouse_entered():
 	if not Global.dragging:
 		draggable=true
 		scale=Vector2(1.05,1.05)
-
 
 func _on_area_2d_mouse_exited():
 	if not Global.dragging:
 		draggable=false
 		scale=Vector2(1.0,1.0)
 
+func _on_trap_destroyed():
+	queue_free()

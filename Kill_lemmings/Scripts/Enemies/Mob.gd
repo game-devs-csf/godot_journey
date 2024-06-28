@@ -51,9 +51,16 @@ func _process(_delta):
 		emit_signal('mob_died', name)
 		return
 		
+	if _current_state == state.Attacking:
+		return 
+		
 	if _current_state != state.Running:	_current_state = state.Running
 			
 func _physics_process(delta):
+	if _current_state == state.Attacking:
+		velocity.x = 0
+		return 
+		
 	if navigation_agent.is_navigation_finished():
 		on_target = true
 		return
