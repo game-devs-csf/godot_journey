@@ -11,15 +11,15 @@ var _coins=1500
 
 const waves = {
 	"wave_1": {
-		"total_duration": 1, #Seconds
-		"time_between": 1, #Seconds
+		"total_duration": 20, #Seconds
+		"time_between": 5, #Seconds
 		"spawns": ['Goblin']
 	},
-	#"wave_2": {
-		#"total_duration": 10, #Seconds
-		#"time_between": 2, #Seconds
-		#"spawns": ['Goblin', 'Skeleton']
-	#}
+	"wave_2": {
+		"total_duration": 10, #Seconds
+		"time_between": 2, #Seconds
+		"spawns": ['Goblin', 'Skeleton']
+	}
 }
 
 # Called when the node enters the scene tree for the first time.

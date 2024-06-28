@@ -4,7 +4,7 @@ class_name Drop_slot
 @export var Box:PackedScene
 @export var Pit :PackedScene
 @export var Spikes :PackedScene
-@onready var Manager =$".."
+@onready var Manager =$"../.."
 var Full = false
 
 func _get_drag_data(at_position):
@@ -45,6 +45,6 @@ func Spawn_Scene(Scene :PackedScene):
 		var pos_ref = get_global_position() + Vector2(15, 15)
 		instance.drop_zone = self
 		instance.global_position=pos_ref
-		add_sibling(instance)
+		Manager.add_child(instance)
 		Manager.add_coins(-instance.Cost)
 	
