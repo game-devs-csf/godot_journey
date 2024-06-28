@@ -102,10 +102,10 @@ animations = [{
 [node name="Spikes" type="Node2D" groups=["Trap"]]
 script = ExtResource("1_6b62f")
 Trap_type = 2
-Cost = 10
 Damage = 2
 
 [node name="Area_spikes" type="Area2D" parent="."]
+collision_layer = 2
 script = ExtResource("2_16hcj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_spikes"]
@@ -118,8 +118,6 @@ scale = Vector2(1.6875, 1.33333)
 sprite_frames = SubResource("SpriteFrames_ku36n")
 autoplay = "default"
 frame_progress = 0.748675
-
-[node name="Timer" type="Timer" parent="."]
 
 [connection signal="trap_destroyed" from="." to="." method="_on_trap_destroyed"]
 [connection signal="body_entered" from="Area_spikes" to="Area_spikes" method="_on_body_entered"]

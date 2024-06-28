@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://bpnm4cm1jlcrp"]
+[gd_scene load_steps=32 format=3 uid="uid://bpnm4cm1jlcrp"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Goblin.gd" id="1_ur4e0"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Skeleton.gd" id="1_ox77j"]
 [ext_resource type="Texture2D" uid="uid://b06e7pmofq73b" path="res://Assets/Sprites/Characters/Skeleton/Skeleton/Skeleton-Idle.png" id="2_bejjj"]
 [ext_resource type="Texture2D" uid="uid://dnn53p4axdvxw" path="res://Assets/Sprites/Characters/Skeleton/Skeleton/Skeleton-Death.png" id="2_r43kt"]
 [ext_resource type="Texture2D" uid="uid://c7rdmec5pltu1" path="res://Assets/Sprites/Characters/Skeleton/Skeleton/Skeleton-Hurt.png" id="3_2t0xs"]
 [ext_resource type="Texture2D" uid="uid://bw161gcudtuqy" path="res://Assets/Sprites/Characters/Skeleton/Skeleton/Skeleton-Walk.png" id="3_5jtyj"]
+[ext_resource type="PackedScene" uid="uid://btvrh183fwsyw" path="res://Scenes/UI/enemy_health.tscn" id="6_72wwe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3hh3h"]
 atlas = ExtResource("2_r43kt")
@@ -184,19 +185,45 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dmcna"]
-radius = 4.0
-height = 10.0
+radius = 15.0
+height = 56.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esrd8"]
+size = Vector2(85, 30)
 
 [node name="Skeleton" type="CharacterBody2D" groups=["Enemy"]]
-position = Vector2(-1, 32)
-script = ExtResource("1_ur4e0")
+collision_mask = 6
+script = ExtResource("1_ox77j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -40)
+position = Vector2(-2, -31)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_jq322")
 animation = &"Run"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -38)
+position = Vector2(10, -31)
 shape = SubResource("CapsuleShape2D_dmcna")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 30.0
+target_desired_distance = 30.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="Attack_range" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(10.5, -33)
+shape = SubResource("RectangleShape2D_esrd8")
+
+[node name="EnemyHealth" parent="." instance=ExtResource("6_72wwe")]
+offset_left = -36.0
+offset_top = -88.0
+offset_right = -36.0
+offset_bottom = -88.0
+scale = Vector2(0.5, 0.5)
+
+[connection signal="mob_damaged" from="." to="." method="_on_mob_damaged"]
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="area_shape_exited" from="Area2D" to="." method="_on_area_2d_area_shape_exited"]

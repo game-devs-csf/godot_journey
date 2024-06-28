@@ -27,7 +27,7 @@ script = ExtResource("1_eqvsi")
 Cost = 5
 
 [node name="Area_trap" type="Area2D" parent="."]
-collision_mask = 5
+collision_layer = 8
 script = ExtResource("2_4nxxa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_trap"]

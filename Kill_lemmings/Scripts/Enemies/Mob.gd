@@ -12,18 +12,12 @@ enum directions {Left, Right}
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var _animated_sprite = $AnimatedSprite2D
 
-
 signal mob_died
 signal mob_damaged
 
-var hp : int = 10:
+var hp : int = max_hp:
 	set(value): 
-		hp = clamp(value, 0, max_hp)
-		mob_damaged.emit(hp)
-		
-		if hp <= 0:
-			mob_died.emit(name)
-			
+		hp = clamp(value, 0, max_hp)			
 	
 var _current_state : state = state.Idle:
 	set(value):
@@ -44,9 +38,11 @@ var def : int = 5
 var movement_speed : float = 5000
 var dead : bool = false
 var on_target : bool = false
+var type = ""
 var _animations : Array[String] = ['Idle', 'Run', 'Attack']
-
+		
 func _ready():
+	_current_state = state.Running
 	set_animation()
 	call_deferred("actor_setup")
 	mob_died.connect(_on_mob_died)
@@ -58,14 +54,15 @@ func _process(_delta):
 		await wait(1)
 		emit_signal('mob_died', name)
 		return
-		
-	if _current_state == state.Attacking:
-		return 
-		
-	if _current_state != state.Running:	_current_state = state.Running
+		#
+	#if _current_state == state.Attacking or _current_state == state.Idle:
+		#return 
+		#
+	#if _current_state != state.Running:
+		#_current_state = state.Running
 			
 func _physics_process(delta):
-	if _current_state == state.Attacking:
+	if _current_state == state.Attacking or _current_state == state.Idle:
 		velocity.x = 0
 		return 
 		
@@ -126,12 +123,11 @@ func move_towards_target(delta) -> void:
 	
 func take_damage(value : int) -> void:
 	hp -= value
+	mob_damaged.emit(hp)
 	if hp <= 0:
 		dead = true
 		$"..".get_parent().add_coins(5)
 		mob_died.emit(name)
-		
-		
 
 func _on_mob_died(_name):
 	queue_free()

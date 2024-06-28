@@ -54,10 +54,10 @@ offset_right = 628.0
 offset_bottom = 595.0
 
 [node name="drop_slot3" parent="." instance=ExtResource("4_a20mv")]
-offset_left = 630.0
-offset_top = 130.0
-offset_right = 663.0
-offset_bottom = 163.0
+offset_left = 635.0
+offset_top = 129.0
+offset_right = 668.0
+offset_bottom = 162.0
 
 [node name="drop_slot4" parent="." instance=ExtResource("4_a20mv")]
 offset_left = 595.0
