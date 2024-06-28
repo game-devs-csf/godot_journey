@@ -159,7 +159,7 @@ radius = 14.0
 height = 40.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yiqlv"]
-size = Vector2(49.5, 30)
+size = Vector2(101, 30)
 
 [node name="Goblin" type="CharacterBody2D" groups=["Enemy"]]
 collision_mask = 6
@@ -184,7 +184,7 @@ debug_enabled = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="Attack_range" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(42.25, -41)
+position = Vector2(-4.5, -41)
 shape = SubResource("RectangleShape2D_yiqlv")
 
 [node name="AttackRate" type="Timer" parent="."]

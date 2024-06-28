@@ -25,23 +25,21 @@ animations = [{
 [node name="Trap" type="Node2D" groups=["Trap"]]
 script = ExtResource("1_eqvsi")
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(1, -1)
-collision_layer = 2
+[node name="Area_trap" type="Area2D" parent="."]
+collision_mask = 5
 script = ExtResource("2_4nxxa")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1.75, 4)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_trap"]
 shape = SubResource("RectangleShape2D_s8kk2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2.5, 2.87571)
 scale = Vector2(1.8125, 1.73865)
 sprite_frames = SubResource("SpriteFrames_y3rkc")
 
 [connection signal="trap_destroyed" from="." to="." method="_on_trap_destroyed"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="Area_trap" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area_trap" to="Area_trap" method="_on_body_entered"]
+[connection signal="body_exited" from="Area_trap" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_exited" from="Area_trap" to="Area_trap" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Area_trap" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area_trap" to="." method="_on_area_2d_mouse_exited"]

@@ -17,9 +17,10 @@ func _physics_process(delta):
 func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	var object = area.get_parent()
 	if object.is_in_group('Trap'):
-		$AttackRate.start()
-		_current_state = state.Attacking
-		_current_attack_target = object
+		if object.Trap_type == 0:
+			$AttackRate.start()
+			_current_state = state.Attacking
+			_current_attack_target = object
 
 func _on_area_2d_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	_current_state = state.Running

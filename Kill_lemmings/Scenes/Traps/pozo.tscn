@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddsxa0ls50h23"]
+
+[ext_resource type="Script" path="res://Scripts/Traps/Trap_class.gd" id="1_o8oe8"]
+[ext_resource type="Texture2D" uid="uid://d0jtbmhyhhljc" path="res://Assets/Sprites/brackeys_platformer_assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_6yxv1"]
+[ext_resource type="Script" path="res://Scripts/Traps/Trap_controller.gd" id="2_hj20h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eruuv"]
+atlas = ExtResource("2_6yxv1")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1tlwi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eruuv")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Pozo" type="Node2D" groups=["Trap"]]
+position = Vector2(0, 15)
+script = ExtResource("1_o8oe8")
+Trap_type = 1
+
+[node name="Area_pozo" type="Area2D" parent="."]
+position = Vector2(0.192059, 14.1921)
+collision_mask = 5
+script = ExtResource("2_hj20h")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area_pozo"]
+polygon = PackedVector2Array(13.8079, -1.19206, 13.8079, 30.8079, 7.80794, 32.8079, -8.19206, 32.8079, -14.1921, 29.8079, -14.1921, -1.19206, -7.19206, -1.19206, -7.19206, -9.19206, 7.80794, -9.19206, 7.80794, -1.19206)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8.19206, 21.1921)
+rotation = 1.5951
+sprite_frames = SubResource("SpriteFrames_1tlwi")
+animation = &"new_animation"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(8.19206, 37.1921)
+rotation = 1.5951
+sprite_frames = SubResource("SpriteFrames_1tlwi")
+animation = &"new_animation"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.98023e-08, 41)
+rotation = -3.13984
+sprite_frames = SubResource("SpriteFrames_1tlwi")
+animation = &"new_animation"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
+position = Vector2(-12.8079, 37.1921)
+rotation = 1.5951
+sprite_frames = SubResource("SpriteFrames_1tlwi")
+animation = &"new_animation"
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="."]
+position = Vector2(-12.8079, 21.1921)
+rotation = 1.5951
+sprite_frames = SubResource("SpriteFrames_1tlwi")
+animation = &"new_animation"
+
+[connection signal="body_entered" from="Area_pozo" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area_pozo" to="Area_pozo" method="_on_body_entered"]
+[connection signal="body_exited" from="Area_pozo" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_exited" from="Area_pozo" to="Area_pozo" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Area_pozo" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area_pozo" to="." method="_on_area_2d_mouse_exited"]

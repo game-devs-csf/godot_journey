@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4tp7727ocqic"]
+
+[ext_resource type="PackedScene" path="res://Scenes/Traps/slot_container.tscn" id="1_864pl"]
+[ext_resource type="Texture2D" uid="uid://ck15ci5d5p7pa" path="res://Assets/Sprites/Traps/16x16 traps.png" id="2_8sj6h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqftw"]
+atlas = ExtResource("2_8sj6h")
+region = Rect2(469, 875, 24.003, 24.003)
+
+[node name="TrapUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control"]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 481.0
+offset_right = 1044.0
+offset_bottom = 521.0
+columns = 4
+
+[node name="Slot_container2" parent="Control/GridContainer" instance=ExtResource("1_864pl")]
+layout_mode = 2
+Type = "Box"
+
+[node name="Slot_container5" parent="Control/GridContainer" instance=ExtResource("1_864pl")]
+layout_mode = 2
+Type = "Pit"
+
+[node name="Slot_container6" parent="Control/GridContainer" instance=ExtResource("1_864pl")]
+layout_mode = 2
+Type = "Spikes"
+
+[node name="TextureRect" parent="Control/GridContainer/Slot_container6" index="0"]
+texture = SubResource("AtlasTexture_kqftw")
+
+[editable path="Control/GridContainer/Slot_container6"]

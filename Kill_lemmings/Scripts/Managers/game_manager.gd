@@ -53,6 +53,7 @@ func spawn_mobs():
 	var mob = _enemy_references[current_enemy].instantiate()
 	mob.target_position = $Exit_point.global_position
 	mob.global_position = $Start_point.global_position
+	print("Mob position: %s" % mob.global_position)
 	mob.global_scale = Vector2(0.6, 0.6)
 	$Enemies.add_child(mob)
 	_enemies_in_scene.append(mob)

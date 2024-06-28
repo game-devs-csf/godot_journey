@@ -15,7 +15,10 @@ enum directions {Left, Right}
 signal mob_died
 
 var hp : int = 10:
-	set(value): hp = clamp(value, 0, max_hp)
+	set(value): 
+		hp = clamp(value, 0, max_hp)
+		if hp <= 0:
+			mob_died.emit(name)
 	
 var _current_state : state = state.Idle:
 	set(value):
@@ -120,6 +123,7 @@ func take_damage(value : int) -> void:
 	hp -= value
 	if hp <= 0:
 		dead = true
+		mob_died.emit(name)
 
 func _on_mob_died(_name):
 	queue_free()
