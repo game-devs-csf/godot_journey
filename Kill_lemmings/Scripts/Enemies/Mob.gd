@@ -46,6 +46,7 @@ func _ready():
 	
 func _process(_delta):
 	if navigation_agent.is_navigation_finished():
+		print("Terminó navegación")
 		on_target = true
 		if _current_state != state.Idle: _current_state = state.Idle
 		await wait(1)
@@ -116,4 +117,3 @@ func take_damage(value : int) -> void:
 
 func _on_mob_died(_name):
 	queue_free()
-

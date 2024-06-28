@@ -102,10 +102,10 @@ animations = [{
 [node name="Spikes" type="Node2D" groups=["Trap"]]
 script = ExtResource("1_6b62f")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area_spikes" type="Area2D" parent="."]
 script = ExtResource("2_16hcj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_spikes"]
 position = Vector2(4, 3.5)
 shape = SubResource("RectangleShape2D_1gii3")
 
@@ -116,4 +116,4 @@ sprite_frames = SubResource("SpriteFrames_ku36n")
 autoplay = "default"
 frame_progress = 0.748675
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Area_spikes" to="Area_spikes" method="_on_body_entered"]
