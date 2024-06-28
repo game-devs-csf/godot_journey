@@ -1870,7 +1870,9 @@ animation = &"open"
 [node name="EntryDoor" type="AnimatedSprite2D" parent="Background"]
 position = Vector2(230, 132)
 sprite_frames = SubResource("SpriteFrames_y5ewh")
-animation = &"open"
+animation = &"close"
+frame = 2
+frame_progress = 1.0
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
@@ -1893,6 +1895,10 @@ position = Vector2(205, 577)
 autostart = true
 
 [node name="TrapUi" parent="." instance=ExtResource("3_70lhs")]
+offset_left = 20.0
+offset_top = 126.0
+offset_right = 20.0
+offset_bottom = 126.0
 
 [node name="drop_slot" parent="." instance=ExtResource("4_a20mv")]
 offset_left = 635.0
@@ -1919,15 +1925,16 @@ offset_right = 628.0
 offset_bottom = 164.0
 
 [node name="Label" type="Label" parent="."]
-offset_left = 30.0
-offset_top = 58.0
-offset_right = 137.0
-offset_bottom = 105.0
+offset_left = 14.0
+offset_top = 42.0
+offset_right = 134.0
+offset_bottom = 89.0
 scale = Vector2(1.2, 0.961143)
 theme = SubResource("Theme_g10hy")
 theme_override_colors/font_color = Color(0.984314, 0.792157, 0.592157, 1)
 theme_override_fonts/font = ExtResource("10_p668c")
 theme_override_font_sizes/font_size = 32
-text = "Coins: "
+text = "Placeholder"
 
+[connection signal="animation_finished" from="Background/EntryDoor" to="." method="_on_entry_door_animation_finished"]
 [connection signal="timeout" from="Spawn_mob" to="." method="_on_spawn_mob_timeout"]
