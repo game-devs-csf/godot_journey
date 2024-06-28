@@ -1,10 +1,40 @@
-[gd_scene load_steps=30 format=3 uid="uid://dfcvpbwea3no4"]
+[gd_scene load_steps=40 format=3 uid="uid://dfcvpbwea3no4"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Goblin.gd" id="1_6ohu6"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Ogre.gd" id="1_xfuog"]
+[ext_resource type="Texture2D" uid="uid://cxt6r4fc4njq8" path="res://Assets/Sprites/Characters/Armored Orc/Armored Orc/Armored Orc-Attack01.png" id="2_g4x6j"]
 [ext_resource type="Texture2D" uid="uid://c6pqjdqt8ytoj" path="res://Assets/Sprites/Characters/Armored Orc/Armored Orc/Armored Orc-Death.png" id="2_twaim"]
 [ext_resource type="Texture2D" uid="uid://ddnh04i7iw63c" path="res://Assets/Sprites/Characters/Armored Orc/Armored Orc/Armored Orc-Hurt.png" id="3_ovrjf"]
 [ext_resource type="Texture2D" uid="uid://ds6a5b3h3t8lk" path="res://Assets/Sprites/Characters/Armored Orc/Armored Orc/Armored Orc-Idle.png" id="4_3swoa"]
 [ext_resource type="Texture2D" uid="uid://bxwobt3ofgjvw" path="res://Assets/Sprites/Characters/Armored Orc/Armored Orc/Armored Orc-Walk.png" id="5_6flwg"]
+[ext_resource type="PackedScene" uid="uid://btvrh183fwsyw" path="res://Scenes/UI/enemy_health.tscn" id="7_6itrn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihtmq"]
+atlas = ExtResource("2_g4x6j")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idgh3"]
+atlas = ExtResource("2_g4x6j")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjlu0"]
+atlas = ExtResource("2_g4x6j")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxqwr"]
+atlas = ExtResource("2_g4x6j")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgo72"]
+atlas = ExtResource("2_g4x6j")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gia7j"]
+atlas = ExtResource("2_g4x6j")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3iu4s"]
+atlas = ExtResource("2_g4x6j")
+region = Rect2(600, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ll5e4"]
 atlas = ExtResource("2_twaim")
@@ -98,6 +128,32 @@ region = Rect2(700, 0, 100, 100)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ihtmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idgh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjlu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxqwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgo72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gia7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3iu4s")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ll5e4")
 }, {
 "duration": 1.0,
@@ -183,20 +239,52 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dmcna"]
-radius = 5.0
-height = 14.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5sfxv"]
+radius = 17.0
+height = 50.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8ivi"]
+size = Vector2(101, 30)
 
 [node name="ogre" type="CharacterBody2D" groups=["Enemy"]]
-position = Vector2(-1, 32)
-script = ExtResource("1_6ohu6")
+collision_mask = 6
+script = ExtResource("1_xfuog")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -40)
+position = Vector2(0, -25)
+scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_jq322")
 animation = &"Death"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -41)
-shape = SubResource("CapsuleShape2D_dmcna")
+position = Vector2(4, -28)
+shape = SubResource("CapsuleShape2D_5sfxv")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 30.0
+target_desired_distance = 30.0
+debug_enabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="Attack_range" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(12, -33)
+shape = SubResource("RectangleShape2D_j8ivi")
+
+[node name="AttackRate" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="EnemyHealth" parent="." instance=ExtResource("7_6itrn")]
+offset_left = -38.0
+offset_top = -96.0
+offset_right = -38.0
+offset_bottom = -96.0
+scale = Vector2(0.505, 0.505)
+
+[connection signal="mob_damaged" from="." to="." method="_on_mob_damaged"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="area_shape_exited" from="Area2D" to="." method="_on_area_2d_area_shape_exited"]
+[connection signal="timeout" from="AttackRate" to="." method="_on_attack_rate_timeout"]

@@ -7,7 +7,7 @@ var _current_attack_target = null
 func _ready():
 	super._ready()
 	$AttackRate.stop()
-	mob_name = 'Goblin'
+	mob_name = 'Ogre'
 	max_hp = 12
 	hp = max_hp
 	enemy_health.max_health = max_hp
@@ -39,3 +39,7 @@ func _on_attack_rate_timeout():
 
 func _on_mob_damaged(_hp):
 	enemy_health.current_health = hp
+
+func _on_animated_sprite_2d_animation_finished():
+	if _animated_sprite.animation == 'Death':
+		queue_free()

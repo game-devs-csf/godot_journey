@@ -1,6 +1,8 @@
 extends Node
 const _skeleton_path = "res://Scenes/Characters/Enemies/skeleton.tscn"
 const _goblin_path = "res://Scenes/Characters/Enemies/goblin.tscn"
+const _ogre_path = "res://Scenes/Characters/Enemies/ogre.tscn"
+
 var _enemy_references = {}
 var _enemies_in_scene = []
 var _current_step = 0
@@ -8,17 +10,16 @@ var _current_wave = 1
 var _coins=1500
 @onready var label = $Label
 
-
 const waves = {
 	"wave_1": {
 		"total_duration": 20, #Seconds
 		"time_between": 5, #Seconds
-		"spawns": ['Goblin']
+		"spawns": ['Ogre']
 	},
 	"wave_2": {
-		"total_duration": 10, #Seconds
+		"total_duration": 30, #Seconds
 		"time_between": 2, #Seconds
-		"spawns": ['Goblin', 'Skeleton']
+		"spawns": ['Ogre', 'Skeleton']
 	}
 }
 
@@ -48,6 +49,7 @@ func get_wave():
 func load_enemies():
 	_enemy_references['Goblin'] = preload(_goblin_path)
 	_enemy_references['Skeleton'] = preload(_skeleton_path)
+	_enemy_references['Ogre'] = preload(_ogre_path)
 	
 func spawn_mobs():
 	var wave = get_wave()
