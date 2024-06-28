@@ -8,7 +8,7 @@ var Trap_scene = load("res://Scenes/Traps/trap.tscn")
 
 var draggable=false
 var is_inside_dropable=false 
-var position_ref
+var positions=[] 
 var offset :Vector2
 var initial_pos :Vector2
 var actual_body : StaticBody2D
@@ -30,7 +30,7 @@ func _process(delta):
 			if is_inside_dropable or counter_area!= 0:
 				
 				var instance = Trap_scene.instantiate()
-				instance.global_position=position_ref
+				instance.global_position=positions[-1]
 				$"..".add_child(instance)
 				tween.tween_property(self,"position", initial_pos, 0.2).set_ease(Tween.EASE_OUT)
 				counter_area = 0
@@ -46,13 +46,20 @@ func _on_area_2d_body_entered(body):
 		is_inside_dropable=true
 		counter_area=1
 		body.modulate=Color(Color.BLACK,1)
-		position_ref=body.position
-	
+		positions.append(body.position)
 		
+
+
 func _on_area_2d_body_exited(body):
 	if body.is_in_group('Dropable') :
 		is_inside_dropable=false
 		body.modulate=Color(Color.GRAY,0.7)
+		if body.position==positions[0]:
+			positions.pop_front()
+		else:
+			positions.pop_back()
+		
+		
 		
 
 func _on_area_2d_mouse_entered():
