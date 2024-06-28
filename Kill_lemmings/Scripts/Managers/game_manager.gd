@@ -31,7 +31,8 @@ func _process(_delta):
 	pass
 	
 func _on_mob_died(_name):
-	_enemies_in_scene = _enemies_in_scene.filter(func(mob): return mob.name != _name)
+	#_enemies_in_scene = _enemies_in_scene.filter(func(mob): return mob.name != _name)
+	pass
 	
 func get_wave():
 	var wave_str = "wave_%s" % _current_wave

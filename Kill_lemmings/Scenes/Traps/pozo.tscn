@@ -62,6 +62,7 @@ rotation = 1.5951
 sprite_frames = SubResource("SpriteFrames_1tlwi")
 animation = &"new_animation"
 
+[connection signal="trap_destroyed" from="." to="." method="_on_trap_destroyed"]
 [connection signal="body_entered" from="Area_pozo" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area_pozo" to="Area_pozo" method="_on_body_entered"]
 [connection signal="body_exited" from="Area_pozo" to="." method="_on_area_2d_body_exited"]

@@ -1,6 +1,7 @@
 extends Area2D
 @onready var parent =$".."
 var bodies = []
+var body_counter=0
 
 
 func _on_body_entered(body):
@@ -22,7 +23,12 @@ func _on_body_entered(body):
 func Box_Action(body):
 	pass	
 func Pit_Action(body):
-	pass
+	body.get_node("CollisionShape2D").queue_free()
+	await wait(0.2)
+	body.queue_free()
+	body_counter+=1
+	if body_counter==5:
+		$"..".trap_destroyed.emit()
 	
 func Spike_Action(body):
 	#Pendiente Señal
