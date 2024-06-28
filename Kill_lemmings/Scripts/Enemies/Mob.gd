@@ -2,7 +2,7 @@ class_name Mob
 extends CharacterBody2D
 ## Base class for the enemies
 
-enum state {Idle, Running, Attacking}
+enum state {Idle, Running, Attacking, Death}
 enum directions {Left, Right}
 
 @export var mob_name = "Mob"
@@ -33,13 +33,13 @@ var _current_direction : directions = directions.Right:
 			$AnimatedSprite2D.flip_h = false
 		
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var att : int = 1
+var att : int = 2
 var def : int = 5
 var movement_speed : float = 5000
 var dead : bool = false
 var on_target : bool = false
 var type = ""
-var _animations : Array[String] = ['Idle', 'Run', 'Attack']
+var _animations : Array[String] = ['Idle', 'Run', 'Attack', 'Death']
 		
 func _ready():
 	_current_state = state.Running
@@ -54,15 +54,9 @@ func _process(_delta):
 		await wait(1)
 		emit_signal('mob_died', name)
 		return
-		#
-	#if _current_state == state.Attacking or _current_state == state.Idle:
-		#return 
-		#
-	#if _current_state != state.Running:
-		#_current_state = state.Running
 			
 func _physics_process(delta):
-	if _current_state == state.Attacking or _current_state == state.Idle:
+	if _current_state in [state.Attacking, state.Idle, state.Death]:
 		velocity.x = 0
 		return 
 		
@@ -108,19 +102,6 @@ func change_direction(_target: Vector2):
 	if direction.x > 0:
 		_current_direction = directions.Right
 			
-# NOT USED ANYMORE
-func move_towards_target(delta) -> void:
-	var direction = global_position.direction_to(target_position)
-	
-	if direction.x < 0:
-		_current_direction = directions.Left
-		
-	if direction.x > 0:
-		_current_direction = directions.Right
-		
-	velocity.x = direction.x * movement_speed * delta
-	move_and_slide()
-	
 func take_damage(value : int) -> void:
 	hp -= value
 	mob_damaged.emit(hp)
@@ -130,4 +111,5 @@ func take_damage(value : int) -> void:
 		mob_died.emit(name)
 
 func _on_mob_died(_name):
-	queue_free()
+	_current_state = state.Death
+	velocity = Vector2(0,0)

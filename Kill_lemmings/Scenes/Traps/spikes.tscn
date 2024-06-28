@@ -102,7 +102,7 @@ animations = [{
 [node name="Spikes" type="Node2D" groups=["Trap"]]
 script = ExtResource("1_6b62f")
 Trap_type = 2
-Damage = 2
+Damage = 5
 
 [node name="Area_spikes" type="Area2D" parent="."]
 collision_layer = 2

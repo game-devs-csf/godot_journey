@@ -36,7 +36,6 @@ func Spike_Action(body):
 		body.take_damage(parent.Damage)
 		
 		if(body.type == "Skeleton"):
-			print("Collided with skeleton: %s" % body.name)
 			parent.Damage -= 1
 			
 		print(parent.Damage)
