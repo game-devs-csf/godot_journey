@@ -5,7 +5,7 @@ var _enemy_references = {}
 var _enemies_in_scene = []
 var _current_step = 0
 var _current_wave = 1
-var _coins=10
+var _coins=15
 @onready var label = $Label
 
 
