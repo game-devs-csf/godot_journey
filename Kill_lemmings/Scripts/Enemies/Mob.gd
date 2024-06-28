@@ -45,8 +45,7 @@ func _ready():
 	mob_died.connect($"..".get_parent()._on_mob_died)
 	
 func _process(_delta):
-	if navigation_agent.is_navigation_finished():
-		on_target = true
+	if on_target:
 		if _current_state != state.Idle: _current_state = state.Idle
 		await wait(1)
 		emit_signal('mob_died', name)
@@ -56,6 +55,7 @@ func _process(_delta):
 			
 func _physics_process(delta):
 	if navigation_agent.is_navigation_finished():
+		on_target = true
 		return
 	
 	if not is_on_floor():
