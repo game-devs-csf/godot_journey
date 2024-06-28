@@ -33,3 +33,7 @@ Type = "Box"
 [node name="Slot_container5" parent="Control/GridContainer" instance=ExtResource("1_864pl")]
 layout_mode = 2
 Type = "Pit"
+
+[node name="Slot_container6" parent="Control/GridContainer" instance=ExtResource("1_864pl")]
+layout_mode = 2
+Type = "Spikes"
