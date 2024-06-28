@@ -5,6 +5,9 @@ var _enemy_references = {}
 var _enemies_in_scene = []
 var _current_step = 0
 var _current_wave = 1
+var _coins=10
+@onready var label = $Label
+
 
 const waves = {
 	"wave_1": {
@@ -24,11 +27,14 @@ func _ready():
 	randomize()
 	load_enemies()
 	$Spawn_mob.wait_time = get_wave().time_between
+	label.text= "Coins: " +str(_coins)
 	#connect('mob_died', _on_mob_died)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
+	
+	
 	
 func _on_mob_died(_name):
 	#_enemies_in_scene = _enemies_in_scene.filter(func(mob): return mob.name != _name)
@@ -79,3 +85,8 @@ func _on_spawn_mob_timeout():
 			
 		$Spawn_mob.wait_time = next_wave.time_between
 		print("Next wave")
+		
+func add_coins(value):
+	
+	_coins+=value
+	label.text= "Coins: " +str(_coins)
