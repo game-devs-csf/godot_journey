@@ -31,8 +31,6 @@ func _process(delta):
 		self.visible=true
 	else:
 		self.visible=false
-
-
 		
 func Spawn_Scene(Scene :PackedScene):
 	var instance=Scene.instantiate()

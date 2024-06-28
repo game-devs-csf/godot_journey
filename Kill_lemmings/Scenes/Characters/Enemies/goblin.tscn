@@ -183,6 +183,7 @@ target_desired_distance = 30.0
 debug_enabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 8
 
 [node name="Attack_range" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-4.5, -41)

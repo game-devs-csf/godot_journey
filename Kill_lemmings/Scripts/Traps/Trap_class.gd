@@ -12,10 +12,15 @@ var drop_zone : PanelContainer = null
 @export var health : int = 10:
 	set(value):
 		health = clamp(value, 0, 100)
-		if health == 0:
+		if health <= 0:
 			trap_destroyed.emit()
 
-@export var Damage : int
+@export var Damage : int:
+	set(value):
+		Damage = clamp(value, 0, 100)
+		
+		if Damage <= 0:
+			trap_destroyed.emit()
 
 func _on_trap_destroyed():
 	if drop_zone != null:
