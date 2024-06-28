@@ -12,6 +12,7 @@ enum directions {Left, Right}
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var _animated_sprite = $AnimatedSprite2D
 
+
 signal mob_died
 
 var hp : int = 10:
@@ -19,6 +20,7 @@ var hp : int = 10:
 		hp = clamp(value, 0, max_hp)
 		if hp <= 0:
 			mob_died.emit(name)
+			
 	
 var _current_state : state = state.Idle:
 	set(value):
@@ -123,7 +125,10 @@ func take_damage(value : int) -> void:
 	hp -= value
 	if hp <= 0:
 		dead = true
+		$"..".get_parent().add_coins(5)
 		mob_died.emit(name)
+		
+		
 
 func _on_mob_died(_name):
 	queue_free()

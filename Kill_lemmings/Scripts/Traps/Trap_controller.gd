@@ -25,7 +25,8 @@ func Box_Action(body):
 func Pit_Action(body):
 	body.get_node("CollisionShape2D").queue_free()
 	await wait(0.2)
-	body.queue_free()
+	body.mob_died.emit(name)
+	$"..".get_parent().add_coins(5)
 	body_counter+=1
 	if body_counter==5:
 		$"..".trap_destroyed.emit()
@@ -34,7 +35,7 @@ func Spike_Action(body):
 	#Pendiente Señal
 	while body in bodies:
 		print(body.hp)
-		body.hp-=parent.Damage
+		body.take_damage(parent.Damage)
 		print(body.hp)
 		await wait(1)
 		
