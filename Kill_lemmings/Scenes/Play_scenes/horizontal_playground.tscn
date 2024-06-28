@@ -55,14 +55,21 @@ offset_bottom = 595.0
 
 [node name="drop_slot3" parent="." instance=ExtResource("4_a20mv")]
 offset_left = 630.0
-offset_top = 126.0
+offset_top = 130.0
 offset_right = 663.0
-offset_bottom = 159.0
+offset_bottom = 163.0
 
 [node name="drop_slot4" parent="." instance=ExtResource("4_a20mv")]
-offset_left = 593.0
-offset_top = 126.0
-offset_right = 626.0
-offset_bottom = 159.0
+offset_left = 595.0
+offset_top = 129.0
+offset_right = 628.0
+offset_bottom = 162.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 17.0
+offset_top = 15.0
+offset_right = 140.0
+offset_bottom = 62.0
+text = "Coins: "
 
 [connection signal="timeout" from="Spawn_mob" to="." method="_on_spawn_mob_timeout"]
