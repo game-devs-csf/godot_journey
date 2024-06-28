@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://bixqkmnuhm4bp"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Goblin.gd" id="1_wk0ba"]
+[ext_resource type="Texture2D" uid="uid://bwb265j2xayup" path="res://Assets/Sprites/Characters/Viridian Drake/ViridianDrake.png" id="2_1v64g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rsta"]
+atlas = ExtResource("2_1v64g")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsc1q"]
+atlas = ExtResource("2_1v64g")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mee0"]
+atlas = ExtResource("2_1v64g")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmvht"]
+atlas = ExtResource("2_1v64g")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jq322"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rsta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsc1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mee0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmvht")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dmcna"]
+radius = 4.0
+height = 8.0
+
+[node name="dragon" type="CharacterBody2D" groups=["Enemy"]]
+position = Vector2(-1, 32)
+script = ExtResource("1_wk0ba")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -40)
+sprite_frames = SubResource("SpriteFrames_jq322")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.184738
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -40)
+shape = SubResource("CapsuleShape2D_dmcna")
