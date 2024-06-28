@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://5j5o21y737vr"]
+[gd_scene load_steps=5 format=3 uid="uid://cq3jvhydl1y2h"]
 
 [ext_resource type="Script" path="res://Scripts/Traps/Drop_slot.gd" id="1_2xuji"]
 [ext_resource type="PackedScene" uid="uid://mm8sgtv5rkbu" path="res://Scenes/Traps/trap.tscn" id="2_uk0v5"]
-[ext_resource type="PackedScene" uid="uid://bxbdm8ecmxkxw" path="res://Scenes/Traps/pozo.tscn" id="3_aeuxx"]
+[ext_resource type="PackedScene" path="res://Scenes/Traps/pozo.tscn" id="3_aeuxx"]
 [ext_resource type="PackedScene" uid="uid://clg1xvka33v2a" path="res://Scenes/Traps/spikes.tscn" id="4_letu4"]
 
 [node name="drop_slot" type="PanelContainer" groups=["Drop"]]

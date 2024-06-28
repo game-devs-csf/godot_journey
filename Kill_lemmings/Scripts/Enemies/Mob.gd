@@ -53,7 +53,6 @@ func _process(_delta):
 		return
 		
 	if _current_state != state.Running:	_current_state = state.Running
-
 			
 func _physics_process(delta):
 	if navigation_agent.is_navigation_finished():
@@ -117,3 +116,4 @@ func take_damage(value : int) -> void:
 
 func _on_mob_died(_name):
 	queue_free()
+

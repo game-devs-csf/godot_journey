@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c4tp7727ocqic"]
 
-[ext_resource type="PackedScene" uid="uid://cmn4v04ljcrsb" path="res://Scenes/Traps/slot_container.tscn" id="1_864pl"]
+[ext_resource type="PackedScene" uid="uid://dpy3bfcgyepnm" path="res://Scenes/Traps/slot_container.tscn" id="1_864pl"]
 
 [node name="TrapUi" type="Control"]
 layout_mode = 3
