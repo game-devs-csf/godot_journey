@@ -12,6 +12,8 @@ enum directions {Left, Right}
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var _animated_sprite = $AnimatedSprite2D
 
+signal mob_died
+
 var hp : int = 10:
 	set(value): hp = clamp(value, 0, max_hp)
 	
@@ -31,42 +33,23 @@ var _current_direction : directions = directions.Right:
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var att : int = 1
 var def : int = 5
-var movement_speed : float = 2000
+var movement_speed : float = 5000
 var dead : bool = false
 var on_target : bool = false
 var _animations : Array[String] = ['Idle', 'Run', 'Attack']
 
 func _ready():
 	set_animation()
-	
-	# These values need to be adjusted for the actor's speed the navigation layout.
-	#navigation_agent.path_desired_distance = 4.0
-	#navigation_agent.target_desired_distance = 4.0
-
-	# Make sure to not await during _ready.
 	call_deferred("actor_setup")
-	
-func actor_setup():
-	# Wait for the first physics frame so the NavigationServer can sync.
-	await get_tree().physics_frame
-
-	# Now that the navigation map is no longer empty, set the movement target.
-	set_movement_target(target_position)
-	
-func set_movement_target(movement_target: Vector2):
-	navigation_agent.target_position = movement_target
+	mob_died.connect(_on_mob_died)
+	mob_died.connect($"..".get_parent()._on_mob_died)
 	
 func _process(_delta):
-	#if !on_target:
-		#if _current_state != state.Running:	_current_state = state.Running
-		#
-	#print('Position: %s Target: %s' % [global_position, target_position])
-		#if global_position.distance_to(target_position) <= 3:
-			#on_target = true
-			#_current_state = state.Idle	
 	if navigation_agent.is_navigation_finished():
 		on_target = true
 		if _current_state != state.Idle: _current_state = state.Idle
+		await wait(1)
+		emit_signal('mob_died', name)
 		return
 		
 	if _current_state != state.Running:	_current_state = state.Running
@@ -77,8 +60,6 @@ func _physics_process(delta):
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	#
-	#move_towards_target(delta)
 
 	var current_agent_position: Vector2 = global_position
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
@@ -88,7 +69,22 @@ func _physics_process(delta):
 	velocity.x = current_agent_position.direction_to(next_path_position).x * movement_speed * delta
 	move_and_slide()
 
-func set_animation() -> void:
+func actor_setup():
+	# Wait for the first physics frame so the NavigationServer can sync.
+	await get_tree().physics_frame
+
+	# Now that the navigation map is no longer empty, set the movement target.
+	set_movement_target(target_position)
+	
+func set_movement_target(movement_target: Vector2):
+	navigation_agent.target_position = movement_target
+
+func wait(seconds: float):
+	await get_tree().create_timer(seconds).timeout
+	
+func set_animation():
+	#if _animated_sprite.is_playing():
+		#await _animated_sprite.animation_looped
 	_animated_sprite.play(_animations[_current_state])
 	
 func change_direction(_target: Vector2):
@@ -100,6 +96,7 @@ func change_direction(_target: Vector2):
 	if direction.x > 0:
 		_current_direction = directions.Right
 			
+# NOT USED ANYMORE
 func move_towards_target(delta) -> void:
 	var direction = global_position.direction_to(target_position)
 	
@@ -116,4 +113,6 @@ func take_damage(value : int) -> void:
 	hp -= value
 	if hp <= 0:
 		dead = true
-	
+
+func _on_mob_died(_name):
+	queue_free()

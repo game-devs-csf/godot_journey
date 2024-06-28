@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 const _goblin_path = "res://Scenes/Characters/Enemies/goblin.tscn"
 var _enemy_references = {}
@@ -24,11 +24,15 @@ func _ready():
 	randomize()
 	load_enemies()
 	$Spawn_mob.wait_time = get_wave().time_between
+	#connect('mob_died', _on_mob_died)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
-
+	
+func _on_mob_died(_name):
+	_enemies_in_scene = _enemies_in_scene.filter(func(mob): return mob.name != _name)
+	
 func get_wave():
 	var wave_str = "wave_%s" % _current_wave
 	if waves.has(wave_str):
