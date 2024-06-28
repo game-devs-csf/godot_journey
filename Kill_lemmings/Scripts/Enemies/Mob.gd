@@ -42,7 +42,7 @@ func _process(_delta):
 	if !on_target:
 		if _current_state != state.Running:	_current_state = state.Running
 		
-		print('Position: %s Target: %s' % [global_position, target])
+		
 		if global_position.distance_to(target) <= 3:
 			on_target = true
 			_current_state = state.Idle

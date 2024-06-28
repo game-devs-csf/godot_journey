@@ -1,21 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwum5yhucxkwl"]
+[gd_scene load_steps=5 format=3 uid="uid://dwum5yhucxkwl"]
 
 [ext_resource type="TileSet" uid="uid://ibj4j60f70wc" path="res://Assets/Tilemaps/placeholder.tres" id="1_c8kf4"]
 [ext_resource type="PackedScene" uid="uid://dhmglr0p6sbop" path="res://Scenes/Characters/Enemies/goblin.tscn" id="2_pnlx1"]
-[ext_resource type="PackedScene" uid="uid://v4brylap2hpi" path="res://Scenes/Traps/Drop_space.tscn" id="3_p1dir"]
-[ext_resource type="PackedScene" uid="uid://cmn4v04ljcrsb" path="res://Scenes/Traps/slot_container.tscn" id="4_bf0uf"]
+[ext_resource type="PackedScene" uid="uid://5j5o21y737vr" path="res://Scenes/Traps/drop_slot.tscn" id="4_3cicx"]
 [ext_resource type="PackedScene" uid="uid://c4tp7727ocqic" path="res://Scenes/UI/trap_ui.tscn" id="4_clxli"]
 
 [node name="HorizontalPlayground" type="Node2D"]
-
-[node name="Slot_container" parent="." instance=ExtResource("4_bf0uf")]
-offset_left = 546.0
-offset_top = 127.0
-offset_right = 586.0
-offset_bottom = 167.0
-
-[node name="TextureRect" parent="Slot_container" index="0"]
-texture = null
 
 [node name="TrapUi" parent="." instance=ExtResource("4_clxli")]
 
@@ -30,51 +20,8 @@ position = Vector2(185, 141)
 scale = Vector2(0.5, 0.5)
 target = Vector2(712, 156)
 
-[node name="GridContainer" type="GridContainer" parent="Camera2D"]
-offset_left = 206.0
-offset_top = 115.0
-offset_right = 435.0
-offset_bottom = 233.0
-columns = 4
-
-[node name="Slot_container2" parent="Camera2D/GridContainer" instance=ExtResource("4_bf0uf")]
-layout_mode = 2
-slot_type = 2
-
-[node name="Slot_container5" parent="Camera2D/GridContainer" instance=ExtResource("4_bf0uf")]
-layout_mode = 2
-slot_type = 2
-
-[node name="Slot_container3" parent="Camera2D/GridContainer" instance=ExtResource("4_bf0uf")]
-layout_mode = 2
-slot_type = 2
-
-[node name="Slot_container4" parent="Camera2D/GridContainer" instance=ExtResource("4_bf0uf")]
-layout_mode = 2
-slot_type = 2
-
-[node name="Slot_container" parent="Camera2D" instance=ExtResource("4_bf0uf")]
-offset_left = 115.0
-offset_top = -54.0
-offset_right = 155.0
-offset_bottom = -14.0
-
-[node name="Slot_container2" parent="Camera2D" instance=ExtResource("4_bf0uf")]
-offset_left = 183.0
-offset_top = -56.0
-offset_right = 223.0
-offset_bottom = -16.0
-
-[node name="StaticBody2D" parent="." instance=ExtResource("3_p1dir")]
-position = Vector2(429, 157)
-
-[node name="StaticBody2D2" parent="." instance=ExtResource("3_p1dir")]
-position = Vector2(460, 157)
-
-[node name="StaticBody2D3" parent="." instance=ExtResource("3_p1dir")]
-position = Vector2(492, 156)
-
-[node name="StaticBody2D4" parent="." instance=ExtResource("3_p1dir")]
-
-position = Vector2(-99, -187)
-
+[node name="drop_slot" parent="." instance=ExtResource("4_3cicx")]
+offset_left = 330.0
+offset_top = 138.0
+offset_right = 363.0
+offset_bottom = 171.0

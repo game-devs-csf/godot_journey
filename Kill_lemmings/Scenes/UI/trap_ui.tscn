@@ -28,16 +28,8 @@ columns = 4
 
 [node name="Slot_container2" parent="Control/GridContainer" instance=ExtResource("1_864pl")]
 layout_mode = 2
-slot_type = 2
+Type = "Box"
 
 [node name="Slot_container5" parent="Control/GridContainer" instance=ExtResource("1_864pl")]
 layout_mode = 2
-slot_type = 2
-
-[node name="Slot_container3" parent="Control/GridContainer" instance=ExtResource("1_864pl")]
-layout_mode = 2
-slot_type = 2
-
-[node name="Slot_container4" parent="Control/GridContainer" instance=ExtResource("1_864pl")]
-layout_mode = 2
-slot_type = 2
+Type = "Pit"

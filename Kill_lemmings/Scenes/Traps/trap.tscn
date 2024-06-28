@@ -24,7 +24,6 @@ animations = [{
 
 [node name="Trap" type="Node2D" groups=["Trap"]]
 script = ExtResource("1_eqvsi")
-Scene = "res://Scenes/Traps/trap.tscn"
 
 [node name="Area_trap" type="Area2D" parent="."]
 collision_mask = 5
