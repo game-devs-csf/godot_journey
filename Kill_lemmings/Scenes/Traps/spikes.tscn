@@ -120,5 +120,6 @@ frame_progress = 0.748675
 
 [node name="Timer" type="Timer" parent="."]
 
+[connection signal="trap_destroyed" from="." to="." method="_on_trap_destroyed"]
 [connection signal="body_entered" from="Area_spikes" to="Area_spikes" method="_on_body_entered"]
 [connection signal="body_exited" from="Area_spikes" to="Area_spikes" method="_on_body_exited"]

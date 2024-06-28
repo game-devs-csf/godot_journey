@@ -23,6 +23,7 @@ func Box_Action(body):
 	pass	
 func Pit_Action(body):
 	pass
+	
 func Spike_Action(body):
 	#Pendiente Señal
 	while body in bodies:

@@ -20,7 +20,7 @@ animations = [{
 }]
 
 [node name="Pozo" type="Node2D" groups=["Trap"]]
-position = Vector2(0, 15)
+position = Vector2(19, 13)
 script = ExtResource("1_o8oe8")
 Trap_type = 1
 
