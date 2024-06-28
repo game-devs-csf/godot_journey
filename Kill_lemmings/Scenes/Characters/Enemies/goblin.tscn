@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://dhmglr0p6sbop"]
+[gd_scene load_steps=26 format=3 uid="uid://dhmglr0p6sbop"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Goblin.gd" id="1_pi284"]
 [ext_resource type="Texture2D" uid="uid://ds01thebmv1vw" path="res://Assets/Sprites/Goblins/Troops/TNT/Red/TNT_Red.png" id="1_xtd48"]
+[ext_resource type="PackedScene" uid="uid://btvrh183fwsyw" path="res://Scenes/UI/enemy_health.tscn" id="3_vgyw2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mduwb"]
 atlas = ExtResource("1_xtd48")
@@ -190,6 +191,14 @@ shape = SubResource("RectangleShape2D_yiqlv")
 [node name="AttackRate" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="EnemyHealth" parent="." instance=ExtResource("3_vgyw2")]
+offset_left = -51.0
+offset_top = -96.0
+offset_right = -51.0
+offset_bottom = -96.0
+scale = Vector2(0.505, 0.505)
+
+[connection signal="mob_damaged" from="." to="." method="_on_mob_damaged"]
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_exited" from="Area2D" to="." method="_on_area_2d_area_shape_exited"]
 [connection signal="timeout" from="AttackRate" to="." method="_on_attack_rate_timeout"]
