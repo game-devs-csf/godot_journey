@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dhmglr0p6sbop"]
+[gd_scene load_steps=25 format=3 uid="uid://dhmglr0p6sbop"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Goblin.gd" id="1_pi284"]
 [ext_resource type="Texture2D" uid="uid://ds01thebmv1vw" path="res://Assets/Sprites/Goblins/Troops/TNT/Red/TNT_Red.png" id="1_xtd48"]
@@ -103,9 +103,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v02ma")
 }],
-"loop": false,
+"loop": true,
 "name": &"Attack",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -158,13 +158,19 @@ animations = [{
 radius = 14.0
 height = 40.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yiqlv"]
+size = Vector2(101, 30)
+
 [node name="Goblin" type="CharacterBody2D" groups=["Enemy"]]
+collision_mask = 6
 script = ExtResource("1_pi284")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -40)
+scale = Vector2(0.98621, 1)
 sprite_frames = SubResource("SpriteFrames_jq322")
-animation = &"Run"
+animation = &"Attack"
+frame_progress = 0.616774
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -31)
@@ -174,3 +180,16 @@ shape = SubResource("CapsuleShape2D_dmcna")
 path_desired_distance = 30.0
 target_desired_distance = 30.0
 debug_enabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Attack_range" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-4.5, -41)
+shape = SubResource("RectangleShape2D_yiqlv")
+
+[node name="AttackRate" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="area_shape_exited" from="Area2D" to="." method="_on_area_2d_area_shape_exited"]
+[connection signal="timeout" from="AttackRate" to="." method="_on_attack_rate_timeout"]

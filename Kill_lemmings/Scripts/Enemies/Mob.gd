@@ -15,7 +15,10 @@ enum directions {Left, Right}
 signal mob_died
 
 var hp : int = 10:
-	set(value): hp = clamp(value, 0, max_hp)
+	set(value): 
+		hp = clamp(value, 0, max_hp)
+		if hp <= 0:
+			mob_died.emit(name)
 	
 var _current_state : state = state.Idle:
 	set(value):
@@ -51,9 +54,16 @@ func _process(_delta):
 		emit_signal('mob_died', name)
 		return
 		
+	if _current_state == state.Attacking:
+		return 
+		
 	if _current_state != state.Running:	_current_state = state.Running
 			
 func _physics_process(delta):
+	if _current_state == state.Attacking:
+		velocity.x = 0
+		return 
+		
 	if navigation_agent.is_navigation_finished():
 		on_target = true
 		return
@@ -113,6 +123,7 @@ func take_damage(value : int) -> void:
 	hp -= value
 	if hp <= 0:
 		dead = true
+		mob_died.emit(name)
 
 func _on_mob_died(_name):
 	queue_free()
