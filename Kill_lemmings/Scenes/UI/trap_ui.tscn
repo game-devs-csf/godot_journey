@@ -26,10 +26,8 @@ grow_vertical = 2
 
 [node name="GridContainer" type="GridContainer" parent="Control"]
 layout_mode = 0
-offset_left = 872.0
-offset_top = 481.0
-offset_right = 1044.0
-offset_bottom = 521.0
+offset_right = 172.0
+offset_bottom = 128.0
 
 [node name="Slot_container2" parent="Control/GridContainer" instance=ExtResource("1_864pl")]
 layout_mode = 2
