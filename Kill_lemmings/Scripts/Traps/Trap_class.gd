@@ -7,6 +7,7 @@ signal trap_destroyed
 var drop_zone : PanelContainer = null
 
 @export_enum("Box", "Pit", "Spikes") var Trap_type : int
+@export var Cost:int
 
 @export var health : int = 10:
 	set(value):

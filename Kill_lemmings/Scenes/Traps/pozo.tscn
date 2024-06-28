@@ -23,6 +23,7 @@ animations = [{
 position = Vector2(19, 13)
 script = ExtResource("1_o8oe8")
 Trap_type = 1
+Cost = 20
 
 [node name="Area_pozo" type="Area2D" parent="."]
 position = Vector2(0.192059, 14.1921)

@@ -24,6 +24,7 @@ animations = [{
 
 [node name="Trap" type="Node2D" groups=["Trap"]]
 script = ExtResource("1_eqvsi")
+Cost = 5
 
 [node name="Area_trap" type="Area2D" parent="."]
 collision_mask = 5
