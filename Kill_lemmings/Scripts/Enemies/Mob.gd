@@ -13,6 +13,7 @@ enum directions {Left, Right}
 @onready var _animated_sprite = $AnimatedSprite2D
 
 signal mob_died
+signal mob_arrived
 signal mob_damaged
 
 var hp : int = max_hp:
@@ -47,12 +48,13 @@ func _ready():
 	call_deferred("actor_setup")
 	mob_died.connect(_on_mob_died)
 	mob_died.connect($"..".get_parent()._on_mob_died)
+	mob_arrived.connect(_on_mob_arrived)
 	
 func _process(_delta):
 	if on_target:
 		if _current_state != state.Idle: _current_state = state.Idle
 		await wait(1)
-		emit_signal('mob_died', name)
+		emit_signal('mob_arrived', name)
 		return
 			
 func _physics_process(delta):
@@ -113,3 +115,7 @@ func take_damage(value : int) -> void:
 func _on_mob_died(_name):
 	_current_state = state.Death
 	velocity = Vector2(0,0)
+
+func _on_mob_arrived(_name):
+	queue_free()
+	
