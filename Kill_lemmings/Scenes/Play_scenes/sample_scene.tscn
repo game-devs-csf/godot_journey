@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxxhg8ukb6w4x"]
+[gd_scene load_steps=9 format=3 uid="uid://bb2g6qx5ivixg"]
 
 [ext_resource type="Texture2D" uid="uid://gsq3tj08lm2v" path="res://Assets/Tilemaps/14-TileSets/Terrain (32x32).png" id="1_m0gds"]
 [ext_resource type="Texture2D" uid="uid://wq6ab1lg868u" path="res://Assets/Tilemaps/14-TileSets/Decorations (32x32).png" id="2_ek2cw"]
-[ext_resource type="PackedScene" uid="uid://bpnm4cm1jlcrp" path="res://Scenes/Characters/Enemies/skeleton.tscn" id="2_xx3lq"]
+[ext_resource type="PackedScene" path="res://Scenes/Characters/Enemies/skeleton.tscn" id="2_xx3lq"]
 [ext_resource type="Texture2D" uid="uid://o02i5nnppvla" path="res://Assets/Tilemaps/14-TileSets/11-Door/Idle.png" id="3_l1dx5"]
-[ext_resource type="PackedScene" uid="uid://ynnv0hv7w7l6" path="res://Scenes/Traps/spikes.tscn" id="5_knu5o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mcg1i"]
 texture = ExtResource("1_m0gds")
@@ -1421,6 +1420,3 @@ zoom = Vector2(2, 2)
 
 [node name="Skeleton" parent="." instance=ExtResource("2_xx3lq")]
 position = Vector2(-239, -31)
-
-[node name="spikes" parent="." instance=ExtResource("5_knu5o")]
-position = Vector2(-72, -48)
