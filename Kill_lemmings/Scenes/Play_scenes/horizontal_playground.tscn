@@ -40,6 +40,10 @@ position = Vector2(205, 577)
 autostart = true
 
 [node name="TrapUi" parent="." instance=ExtResource("3_70lhs")]
+offset_left = 67.0
+offset_top = -39.0
+offset_right = 67.0
+offset_bottom = -39.0
 
 [node name="drop_slot" parent="." instance=ExtResource("4_a20mv")]
 offset_left = 635.0
@@ -65,7 +69,7 @@ offset_top = 131.0
 offset_right = 628.0
 offset_bottom = 164.0
 
-[node name="Label" type="Label" parent="."]
+[node name="Coins_label" type="Label" parent="."]
 offset_left = 17.0
 offset_top = 15.0
 offset_right = 140.0
