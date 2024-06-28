@@ -1882,12 +1882,12 @@ navigation_polygon = SubResource("NavigationPolygon_71jxx")
 [node name="Start_point" type="Node2D" parent="."]
 light_mask = 0
 visibility_layer = 0
-position = Vector2(219, 100)
+position = Vector2(228, 140)
 
 [node name="Exit_point" type="Node2D" parent="."]
 light_mask = 0
 visibility_layer = 0
-position = Vector2(205, 577)
+position = Vector2(246, 577)
 
 [node name="Enemies" type="Node2D" parent="."]
 
