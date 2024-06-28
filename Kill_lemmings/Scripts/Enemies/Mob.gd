@@ -13,10 +13,13 @@ enum directions {Left, Right}
 @onready var _animated_sprite = $AnimatedSprite2D
 
 signal mob_died
+signal mob_damaged
 
 var hp : int = 10:
 	set(value): 
 		hp = clamp(value, 0, max_hp)
+		mob_damaged.emit(hp)
+		
 		if hp <= 0:
 			mob_died.emit(name)
 	

@@ -1,11 +1,14 @@
 extends Mob
 
+@onready var enemy_health = $EnemyHealth
+
 var _current_attack_target = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
 	$AttackRate.stop()
 	mob_name = 'Goblin'
+	enemy_health.max_health = 10
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -32,3 +35,6 @@ func _on_attack_rate_timeout():
 	
 	_current_attack_target.health -= att
 	print(_current_attack_target.health)
+
+func _on_mob_damaged(_hp):
+	enemy_health.current_health = hp
