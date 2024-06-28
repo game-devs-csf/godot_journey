@@ -101,6 +101,8 @@ animations = [{
 
 [node name="Spikes" type="Node2D" groups=["Trap"]]
 script = ExtResource("1_6b62f")
+Trap_type = 2
+Damage = 2
 
 [node name="Area_spikes" type="Area2D" parent="."]
 script = ExtResource("2_16hcj")
@@ -116,4 +118,7 @@ sprite_frames = SubResource("SpriteFrames_ku36n")
 autoplay = "default"
 frame_progress = 0.748675
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Area_spikes" to="Area_spikes" method="_on_body_entered"]
+[connection signal="body_exited" from="Area_spikes" to="Area_spikes" method="_on_body_exited"]

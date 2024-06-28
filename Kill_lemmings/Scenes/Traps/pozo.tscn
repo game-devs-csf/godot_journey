@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxbdm8ecmxkxw"]
+[gd_scene load_steps=6 format=3 uid="uid://ddsxa0ls50h23"]
 
 [ext_resource type="Script" path="res://Scripts/Traps/Trap_class.gd" id="1_o8oe8"]
 [ext_resource type="Texture2D" uid="uid://d0jtbmhyhhljc" path="res://Assets/Sprites/brackeys_platformer_assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_6yxv1"]
@@ -22,7 +22,7 @@ animations = [{
 [node name="Pozo" type="Node2D" groups=["Trap"]]
 position = Vector2(0, 15)
 script = ExtResource("1_o8oe8")
-Scene = "res://Scenes/Traps/pozo.tscn"
+Trap_type = 1
 
 [node name="Area_pozo" type="Area2D" parent="."]
 position = Vector2(0.192059, 14.1921)
@@ -47,7 +47,6 @@ animation = &"new_animation"
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.98023e-08, 41)
 rotation = -3.13984
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_1tlwi")
 animation = &"new_animation"
 
@@ -66,5 +65,6 @@ animation = &"new_animation"
 [connection signal="body_entered" from="Area_pozo" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area_pozo" to="Area_pozo" method="_on_body_entered"]
 [connection signal="body_exited" from="Area_pozo" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_exited" from="Area_pozo" to="Area_pozo" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Area_pozo" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area_pozo" to="." method="_on_area_2d_mouse_exited"]

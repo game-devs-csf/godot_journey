@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d0jtbmhyhhljc" path="res://Assets/Sprites/brackeys_platformer_assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_ars7j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8kk2"]
-size = Vector2(28, 28)
+size = Vector2(28.5, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6kxo5"]
 atlas = ExtResource("2_ars7j")
@@ -39,5 +39,6 @@ sprite_frames = SubResource("SpriteFrames_y3rkc")
 [connection signal="body_entered" from="Area_trap" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area_trap" to="Area_trap" method="_on_body_entered"]
 [connection signal="body_exited" from="Area_trap" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_exited" from="Area_trap" to="Area_trap" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Area_trap" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area_trap" to="." method="_on_area_2d_mouse_exited"]
