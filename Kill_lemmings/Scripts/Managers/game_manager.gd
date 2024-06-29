@@ -12,7 +12,6 @@ var _skeleton_counter=0
 var _coins=50
 var _mobs_entered = 0
 var _waves_finished=false
-var _waves_finished=false
 
 
 @onready var label = $Label
@@ -22,27 +21,27 @@ const waves = {
 		"total_duration": 20, #Seconds
 		"time_between": 5, #Seconds
 		"spawns": ['Ogre']
-	}#,
-	#"wave_2": {
-		#"total_duration": 30, #Seconds
-		#"time_between": 4, #Seconds
-		#"spawns": ['Skeleton']
-	#},
-	#"wave_3": {
-		#"total_duration": 40, #Seconds
-		#"time_between": 3, #Seconds
-		#"spawns": ['Ogre', 'Skeleton']
-	#},
-	#"wave_4": {
-		#"total_duration": 50, #Seconds
-		#"time_between": 2, #Seconds
-		#"spawns": ['Ogre', 'Skeleton']
-	#},
-	#"wave_5": {
-		#"total_duration": 100, #Seconds
-		#"time_between": 2, #Seconds
-		#"spawns": ['Ogre', 'Skeleton']
-	#}
+	},
+	"wave_2": {
+		"total_duration": 30, #Seconds
+		"time_between": 4, #Seconds
+		"spawns": ['Skeleton']
+	},
+	"wave_3": {
+		"total_duration": 40, #Seconds
+		"time_between": 3, #Seconds
+		"spawns": ['Ogre', 'Skeleton']
+	},
+	"wave_4": {
+		"total_duration": 50, #Seconds
+		"time_between": 2, #Seconds
+		"spawns": ['Ogre', 'Skeleton']
+	},
+	"wave_5": {
+		"total_duration": 100, #Seconds
+		"time_between": 2, #Seconds
+		"spawns": ['Ogre', 'Skeleton']
+	}
 }
 
 # Called when the node enters the scene tree for the first time.
