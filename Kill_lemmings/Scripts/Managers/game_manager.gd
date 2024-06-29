@@ -11,6 +11,7 @@ var _ogres_counter=0
 var _skeleton_counter=0
 var _coins=50
 var _mobs_entered = 0
+var _waves_finished=false
 
 
 @onready var label = $Label
@@ -53,10 +54,20 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if _waves_finished and _enemies_in_scene.is_empty():
+		#AQUI VA LA ESCENA DE GANAR
+		print("ganaste")
+		await get_tree().create_timer(1).timeout
+		get_tree().change_scene_to_file("res://Scenes/UI/win_scene.tscn")
 	pass
 	
 func _on_mob_arrived(_name):
 	$Doors/ExitDoor.animated_door.play('open_close')
+	if(_mobs_entered==10):
+		print("Perdiste")
+		await get_tree().create_timer(1).timeout
+		get_tree().change_scene_to_file("res://Scenes/UI/loss_scene.tscn")
+		#AQUI VA LA ESCENA DE PERDER
 	
 	
 func get_wave():
@@ -91,6 +102,7 @@ func spawn_mobs():
 func _on_spawn_mob_timeout():
 	var wave = get_wave()
 	if wave == null:
+		_waves_finished=true
 		$Spawn_mob.stop()
 		return
 		
@@ -103,6 +115,7 @@ func _on_spawn_mob_timeout():
 		
 		var next_wave = get_wave()
 		if next_wave == null:
+			
 			print("Finished")
 			return 
 			
