@@ -9,7 +9,9 @@ var _current_step = 0
 var _current_wave = 1
 var _ogres_counter=0
 var _skeleton_counter=0
-var _coins=1500
+var _coins=50
+var _mobs_entered = 0
+
 
 @onready var label = $Label
 
@@ -21,6 +23,21 @@ const waves = {
 	},
 	"wave_2": {
 		"total_duration": 30, #Seconds
+		"time_between": 4, #Seconds
+		"spawns": ['Skeleton']
+	},
+	"wave_3": {
+		"total_duration": 40, #Seconds
+		"time_between": 3, #Seconds
+		"spawns": ['Ogre', 'Skeleton']
+	},
+	"wave_4": {
+		"total_duration": 50, #Seconds
+		"time_between": 2, #Seconds
+		"spawns": ['Ogre', 'Skeleton']
+	},
+	"wave_5": {
+		"total_duration": 100, #Seconds
 		"time_between": 2, #Seconds
 		"spawns": ['Ogre', 'Skeleton']
 	}
@@ -40,6 +57,7 @@ func _process(_delta):
 	
 func _on_mob_arrived(_name):
 	$Doors/ExitDoor.animated_door.play('open_close')
+	
 	
 func get_wave():
 	var wave_str = "wave_%s" % _current_wave
@@ -107,3 +125,7 @@ func add_coins(value, mob_type):
 
 func wait(seconds: float):
 	await get_tree().create_timer(seconds).timeout
+
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://Scenes/UI/title.tscn")
