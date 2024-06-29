@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dwum5yhucxkwl"]
+[gd_scene load_steps=31 format=3 uid="uid://dwum5yhucxkwl"]
 
 [ext_resource type="TileSet" uid="uid://ibj4j60f70wc" path="res://Assets/Tilemaps/placeholder.tres" id="1_c8kf4"]
 [ext_resource type="Script" path="res://Scripts/Managers/game_manager.gd" id="1_r4xys"]
@@ -6,9 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://gsq3tj08lm2v" path="res://Assets/Tilemaps/14-TileSets/Terrain (32x32).png" id="3_k4cyj"]
 [ext_resource type="PackedScene" uid="uid://bpux1831vpxi" path="res://Scenes/Traps/drop_slot.tscn" id="4_a20mv"]
 [ext_resource type="Texture2D" uid="uid://wq6ab1lg868u" path="res://Assets/Tilemaps/14-TileSets/Decorations (32x32).png" id="4_c5yfd"]
-[ext_resource type="Texture2D" uid="uid://ddimbk528gumo" path="res://Assets/Tilemaps/14-TileSets/11-Door/Closiong (46x56).png" id="5_4sln0"]
-[ext_resource type="Texture2D" uid="uid://o02i5nnppvla" path="res://Assets/Tilemaps/14-TileSets/11-Door/Idle.png" id="5_ddxp8"]
-[ext_resource type="Texture2D" uid="uid://ciwjmvqapcvbw" path="res://Assets/Tilemaps/14-TileSets/11-Door/Opening (46x56).png" id="7_c0aeq"]
+[ext_resource type="PackedScene" uid="uid://h3c6r1t2q4yf" path="res://Scenes/UI/Door.tscn" id="10_jkkm0"]
 [ext_resource type="FontFile" uid="uid://biwcuedcc8y4p" path="res://Assets/Sprites/brackeys_platformer_assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="10_mcwnt"]
 [ext_resource type="FontFile" uid="uid://c7qqwmyfx4cb1" path="res://Assets/Fonts/Orange Kid.otf" id="10_p668c"]
 [ext_resource type="PackedScene" uid="uid://dojfilffl8v7d" path="res://Scenes/UI/Goblin_counter.tscn" id="11_n38tx"]
@@ -1759,87 +1757,10 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_8ed75")
 sources/1 = SubResource("TileSetAtlasSource_uo07x")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ioco4"]
-atlas = ExtResource("5_4sln0")
-region = Rect2(0, 0, 46, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jmrhj"]
-atlas = ExtResource("5_4sln0")
-region = Rect2(46, 0, 46, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wsyqs"]
-atlas = ExtResource("5_4sln0")
-region = Rect2(92, 0, 46, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wew4d"]
-atlas = ExtResource("7_c0aeq")
-region = Rect2(0, 0, 45, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7uprf"]
-atlas = ExtResource("7_c0aeq")
-region = Rect2(45, 0, 45, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pwnon"]
-atlas = ExtResource("7_c0aeq")
-region = Rect2(90, 0, 45, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nmymh"]
-atlas = ExtResource("7_c0aeq")
-region = Rect2(135, 0, 45, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x1x4m"]
-atlas = ExtResource("7_c0aeq")
-region = Rect2(180, 0, 45, 56)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_y5ewh"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ioco4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jmrhj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wsyqs")
-}],
-"loop": false,
-"name": &"close",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_ddxp8")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wew4d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7uprf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pwnon")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nmymh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x1x4m")
-}],
-"loop": false,
-"name": &"open",
-"speed": 5.0
-}]
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_71jxx"]
-vertices = PackedVector2Array(-444, -251, -396, -254, -396, -220, -448, -184, 238, -182, 197, -220, 433, -97, 252, -77, 435, -23, -207, -23, -254, -67, 97, 116, -452, 116, -451, 85, -207, 83, 429, 187, 429, 247, -452, 246, -452, 216, 97, 191, 120, 80)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5), PackedInt32Array(4, 5, 6), PackedInt32Array(7, 4, 6, 8), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(11, 12, 13, 14), PackedInt32Array(15, 16, 17, 18, 19), PackedInt32Array(20, 15, 19, 11), PackedInt32Array(14, 20, 11), PackedInt32Array(14, 13, 10, 9)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-454, -261, -459, -175, 229, -172, 241, -87, -258, -77, -461, 80, -463, 127, 87, 126, 87, 181, -462, 207, -462, 256, 440, 258, 439, 181, 120, 70, -197, 73, -197, -13, 445, -13, 443, -104, 200, -230, -386, -230, -386, -265)])
+vertices = PackedVector2Array(119, 117, -453, 117, -451, 85, -228, 86, -444, -251, -396, -254, -396, -220, -448, -185, 256, -185, 256, -222, 433, -98, 256, -77, 434, -23, -231, -25, -254, -67, 120, 80, 122, 215, 429, 187, 429, 247, -452, 246, -452, 216)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 7, 6, 9), PackedInt32Array(8, 9, 10), PackedInt32Array(11, 8, 10, 12), PackedInt32Array(11, 12, 13, 14), PackedInt32Array(2, 14, 13, 3), PackedInt32Array(0, 3, 15), PackedInt32Array(16, 0, 15, 17, 18), PackedInt32Array(16, 18, 19, 20)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-454, -261, -459, -175, 246, -175, 246, -87, -258, -77, -461, 80, -463, 127, 109, 127, 112, 205, -462, 207, -462, 256, 440, 258, 439, 181, 120, 70, -218, 76, -221, -15, 445, -13, 443, -104, 260, -233, -386, -230, -386, -265)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="Theme" id="Theme_g10hy"]
@@ -1865,34 +1786,9 @@ layer_1/tile_data = PackedInt32Array(655373, 262144, 10, 720909, 262144, 11, 655
 layer_2/name = "Decorations"
 layer_2/tile_data = PackedInt32Array(327699, 262145, 6, 393235, 262145, 7, 458771, 262145, 8, 524307, 262145, 9, 327700, 327681, 6, 393236, 327681, 7, 458772, 327681, 8, 524308, 327681, 9, 327701, 393217, 6, 393237, 393217, 7, 458773, 393217, 8, 524309, 393217, 9, 393238, 458753, 7, 458774, 458753, 8, 524310, 458753, 9, 327709, 524289, 6, 393245, 524289, 7, 458781, 524289, 8, 524317, 524289, 9, 327710, 589825, 6, 393246, 589825, 7, 458782, 589825, 8, 524318, 589825, 9, 327711, 655361, 6, 393247, 655361, 7, 458783, 655361, 8, 524319, 655361, 9, 393248, 720897, 7, 458784, 720897, 8, 524320, 720897, 9, 327719, 262145, 6, 393255, 262145, 7, 458791, 262145, 8, 524327, 262145, 9, 327720, 327681, 6, 393256, 327681, 7, 458792, 327681, 8, 524328, 327681, 9, 327721, 393217, 6, 393257, 393217, 7, 458793, 393217, 8, 524329, 393217, 9, 393258, 458753, 7, 458794, 458753, 8, 524330, 458753, 9, 327729, 524289, 6, 393265, 524289, 7, 458801, 524289, 8, 524337, 524289, 9, 327730, 589825, 6, 393266, 589825, 7, 458802, 589825, 8, 524338, 589825, 9, 327731, 655361, 6, 393267, 655361, 7, 458803, 655361, 8, 524339, 655361, 9, 393268, 720897, 7, 458804, 720897, 8, 524340, 720897, 9, 262202, 131073, 3, 327738, 131073, 4, 393274, 131073, 5, 262203, 196609, 3, 327739, 196609, 4, 393275, 196609, 5, 458810, 131073, 3, 524346, 131073, 4, 589882, 131073, 5, 458811, 196609, 3, 524347, 196609, 4, 589883, 196609, 5, 655418, 131073, 3, 720954, 131073, 4, 786490, 131073, 5, 655419, 196609, 3, 720955, 196609, 4, 786491, 196609, 5, 852026, 131073, 6, 917562, 131073, 7, 852027, 196609, 6, 917563, 196609, 7, 262207, 131073, 3, 327743, 131073, 4, 393279, 131073, 5, 262208, 196609, 3, 327744, 196609, 4, 393280, 196609, 5, 458815, 131073, 3, 524351, 131073, 4, 589887, 131073, 5, 458816, 196609, 3, 524352, 196609, 4, 589888, 196609, 5, 655423, 131073, 8, 720959, 131073, 9, 655424, 196609, 8, 720960, 196609, 9, 983059, 262145, 6, 1048595, 262145, 7, 1114131, 262145, 8, 1179667, 262145, 9, 983060, 327681, 6, 1048596, 327681, 7, 1114132, 327681, 8, 1179668, 327681, 9, 983061, 393217, 6, 1048597, 393217, 7, 1114133, 393217, 8, 1179669, 393217, 9, 1048598, 458753, 7, 1114134, 458753, 8, 1179670, 458753, 9, 983069, 524289, 6, 1048605, 524289, 7, 1114141, 524289, 8, 1179677, 524289, 9, 983070, 589825, 6, 1048606, 589825, 7, 1114142, 589825, 8, 1179678, 589825, 9, 983071, 655361, 6, 1048607, 655361, 7, 1114143, 655361, 8, 1179679, 655361, 9, 1048608, 720897, 7, 1114144, 720897, 8, 1179680, 720897, 9, 983079, 262145, 6, 1048615, 262145, 7, 1114151, 262145, 8, 1179687, 262145, 9, 983080, 327681, 6, 1048616, 327681, 7, 1114152, 327681, 8, 1179688, 327681, 9, 983081, 393217, 6, 1048617, 393217, 7, 1114153, 393217, 8, 1179689, 393217, 9, 1048618, 458753, 7, 1114154, 458753, 8, 1179690, 458753, 9, 983089, 524289, 6, 1048625, 524289, 7, 1114161, 524289, 8, 1179697, 524289, 9, 983090, 589825, 6, 1048626, 589825, 7, 1114162, 589825, 8, 1179698, 589825, 9, 983091, 655361, 6, 1048627, 655361, 7, 1114163, 655361, 8, 1179699, 655361, 9, 1048628, 720897, 7, 1114164, 720897, 8, 1179700, 720897, 9, 786446, 196609, 2, 851982, 196609, 3, 917518, 196609, 4, 983054, 196609, 5, 1048590, 196609, 6, 1114126, 196609, 7, 786445, 131073, 2, 851981, 131073, 3, 917517, 131073, 4, 983053, 131073, 5, 1048589, 131073, 6, 1114125, 131073, 7, 851984, 131073, 3, 917520, 131073, 4, 983056, 131073, 5, 851985, 196609, 3, 917521, 196609, 4, 983057, 196609, 5, 1048592, 131073, 3, 1114128, 131073, 4, 1179664, 131073, 5, 1048593, 196609, 3, 1114129, 196609, 4, 1179665, 196609, 5, 1245200, 131073, 3, 1310736, 131073, 4, 1376272, 131073, 6, 1245201, 196609, 3, 1310737, 196609, 4, 1376273, 196609, 6, 1441808, 131073, 7, 1441809, 196609, 7, 786448, 131073, 2, 786449, 196609, 2)
 
-[node name="ExitDoor" type="AnimatedSprite2D" parent="Background"]
-position = Vector2(245, 564)
-sprite_frames = SubResource("SpriteFrames_y5ewh")
-animation = &"open"
-
-[node name="EntryDoor" type="AnimatedSprite2D" parent="Background"]
-position = Vector2(230, 132)
-sprite_frames = SubResource("SpriteFrames_y5ewh")
-animation = &"close"
-frame = 2
-frame_progress = 1.0
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 position = Vector2(647, 337)
 navigation_polygon = SubResource("NavigationPolygon_71jxx")
-
-[node name="Start_point" type="Node2D" parent="."]
-light_mask = 0
-visibility_layer = 0
-position = Vector2(228, 140)
-
-[node name="Exit_point" type="Node2D" parent="."]
-light_mask = 0
-visibility_layer = 0
-position = Vector2(246, 577)
-
-[node name="Enemies" type="Node2D" parent="."]
 
 [node name="Spawn_mob" type="Timer" parent="."]
 autostart = true
@@ -2269,5 +2165,24 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
 
-[connection signal="animation_finished" from="Background/EntryDoor" to="." method="_on_entry_door_animation_finished"]
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="EntryDoor" parent="Doors" instance=ExtResource("10_jkkm0")]
+position = Vector2(234, 131)
+
+[node name="ExitDoor" parent="Doors" instance=ExtResource("10_jkkm0")]
+position = Vector2(233, 564)
+
+[node name="Start_point" type="Node2D" parent="Doors"]
+light_mask = 0
+visibility_layer = 0
+position = Vector2(247, 149)
+
+[node name="Exit_point" type="Node2D" parent="Doors"]
+light_mask = 0
+visibility_layer = 0
+position = Vector2(246, 570)
+
+[node name="Enemies" type="Node2D" parent="."]
+
 [connection signal="timeout" from="Spawn_mob" to="." method="_on_spawn_mob_timeout"]
