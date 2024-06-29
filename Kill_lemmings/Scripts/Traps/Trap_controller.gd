@@ -25,7 +25,7 @@ func Pit_Action(body):
 	body.get_node("CollisionShape2D").queue_free()
 	await wait(0.2)
 	body.mob_died.emit(name)
-	$"..".get_parent().add_coins(5)
+	$"..".get_parent().add_coins(5, body.type)
 	body_counter+=1
 	if body_counter==5:
 		$"..".trap_destroyed.emit()

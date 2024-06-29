@@ -46,5 +46,5 @@ func Spawn_Scene(Scene :PackedScene):
 		instance.drop_zone = self
 		instance.global_position=pos_ref
 		Manager.add_child(instance)
-		Manager.add_coins(-instance.Cost)
+		Manager.add_coins(-instance.Cost, "trap")
 	
