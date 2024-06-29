@@ -44,6 +44,7 @@ func _on_mob_died(_name):
 func get_wave():
 	var wave_str = "wave_%s" % _current_wave
 	if waves.has(wave_str):
+		$Waves_label.text="Waves: "+str(_current_wave)
 		return waves[wave_str]
 	else:
 		return null	
@@ -95,9 +96,9 @@ func add_coins(value, mob_type):
 	match (mob_type):
 		"Ogre":
 			_ogres_counter+=1
-			$Goblin_counter/AnimatedSprite2D/Label.text=str(_ogres_counter)
+			$Goblin_counter/Label.text=str(_ogres_counter)
 		"Skeleton":
 			_skeleton_counter+=1
-			$Skeleton_counter/AnimatedSprite2D/Label.text=str(_skeleton_counter)
+			$Skeleton_counter/Label.text=str(_skeleton_counter)
 		"trap":
 			pass

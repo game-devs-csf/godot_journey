@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dwum5yhucxkwl"]
+[gd_scene load_steps=42 format=3 uid="uid://dwum5yhucxkwl"]
 
 [ext_resource type="TileSet" uid="uid://ibj4j60f70wc" path="res://Assets/Tilemaps/placeholder.tres" id="1_c8kf4"]
 [ext_resource type="Script" path="res://Scripts/Managers/game_manager.gd" id="1_r4xys"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ddimbk528gumo" path="res://Assets/Tilemaps/14-TileSets/11-Door/Closiong (46x56).png" id="5_4sln0"]
 [ext_resource type="Texture2D" uid="uid://o02i5nnppvla" path="res://Assets/Tilemaps/14-TileSets/11-Door/Idle.png" id="5_ddxp8"]
 [ext_resource type="Texture2D" uid="uid://ciwjmvqapcvbw" path="res://Assets/Tilemaps/14-TileSets/11-Door/Opening (46x56).png" id="7_c0aeq"]
+[ext_resource type="FontFile" uid="uid://biwcuedcc8y4p" path="res://Assets/Sprites/brackeys_platformer_assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="10_mcwnt"]
 [ext_resource type="FontFile" uid="uid://c7qqwmyfx4cb1" path="res://Assets/Fonts/Orange Kid.otf" id="10_p668c"]
 [ext_resource type="PackedScene" uid="uid://dojfilffl8v7d" path="res://Scenes/UI/Goblin_counter.tscn" id="11_n38tx"]
 [ext_resource type="PackedScene" uid="uid://bletew1qah0ov" path="res://Scenes/UI/Skeleton_counter.tscn" id="11_wfnpc"]
@@ -2250,10 +2251,23 @@ offset_right = 369.0
 offset_bottom = 164.0
 
 [node name="Goblin_counter" parent="." instance=ExtResource("11_n38tx")]
-position = Vector2(58, 396)
+position = Vector2(56, 513)
 
 [node name="Skeleton_counter" parent="." instance=ExtResource("11_wfnpc")]
-position = Vector2(55, 345)
+position = Vector2(52, 437)
+
+[node name="Waves_label" type="Label" parent="."]
+offset_left = 26.0
+offset_top = 301.0
+offset_right = 164.0
+offset_bottom = 325.0
+theme_override_colors/font_color = Color(0.972549, 0.737255, 0.478431, 1)
+theme_override_fonts/font = ExtResource("10_mcwnt")
+theme_override_font_sizes/font_size = 24
+text = "Waves: "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
 
 [connection signal="animation_finished" from="Background/EntryDoor" to="." method="_on_entry_door_animation_finished"]
 [connection signal="timeout" from="Spawn_mob" to="." method="_on_spawn_mob_timeout"]

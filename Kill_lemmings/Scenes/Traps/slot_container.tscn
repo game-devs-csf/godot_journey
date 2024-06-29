@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bedf3rqeeg43r"]
+[gd_scene load_steps=5 format=3 uid="uid://bedf3rqeeg43r"]
 
 [ext_resource type="Script" path="res://Scripts/Traps/Slot.gd" id="1_o71f8"]
 [ext_resource type="Texture2D" uid="uid://d0jtbmhyhhljc" path="res://Assets/Sprites/brackeys_platformer_assets/brackeys_platformer_assets/sprites/world_tileset.png" id="3_vy3ec"]
+[ext_resource type="FontFile" uid="uid://biwcuedcc8y4p" path="res://Assets/Sprites/brackeys_platformer_assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="3_yv554"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wt30r"]
 atlas = ExtResource("3_vy3ec")
@@ -33,7 +34,10 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="TextureRect"]
 layout_mode = 2
-offset_left = 39.0
-offset_top = 4.0
-offset_right = 68.0
-offset_bottom = 32.0
+offset_left = 50.0
+offset_right = 89.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.972549, 0.737255, 0.478431, 1)
+theme_override_fonts/font = ExtResource("3_yv554")
+theme_override_font_sizes/font_size = 16
+vertical_alignment = 1
