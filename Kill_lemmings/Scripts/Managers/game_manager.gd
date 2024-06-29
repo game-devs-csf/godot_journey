@@ -1,25 +1,29 @@
 extends Node
 const _skeleton_path = "res://Scenes/Characters/Enemies/skeleton.tscn"
 const _goblin_path = "res://Scenes/Characters/Enemies/goblin.tscn"
+const _ogre_path = "res://Scenes/Characters/Enemies/ogre.tscn"
+
 var _enemy_references = {}
 var _enemies_in_scene = []
 var _current_step = 0
 var _current_wave = 1
+var _ogres_counter=0
+var _skeleton_counter=0
 var _coins=1500
-@onready var label = $Label
 
+@onready var label = $Label
 
 const waves = {
 	"wave_1": {
-		"total_duration": 1, #Seconds
-		"time_between": 1, #Seconds
-		"spawns": ['Goblin']
+		"total_duration": 20, #Seconds
+		"time_between": 5, #Seconds
+		"spawns": ['Ogre']
 	},
-	#"wave_2": {
-		#"total_duration": 10, #Seconds
-		#"time_between": 2, #Seconds
-		#"spawns": ['Goblin', 'Skeleton']
-	#}
+	"wave_2": {
+		"total_duration": 30, #Seconds
+		"time_between": 2, #Seconds
+		"spawns": ['Ogre', 'Skeleton']
+	}
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -33,14 +37,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
-		
-func _on_mob_died(_name):
-	#_enemies_in_scene = _enemies_in_scene.filter(func(mob): return mob.name != _name)
-	pass
+	
+func _on_mob_arrived(_name):
+	$Doors/ExitDoor.animated_door.play('open_close')
 	
 func get_wave():
 	var wave_str = "wave_%s" % _current_wave
 	if waves.has(wave_str):
+		$Waves_label.text="Waves: "+str(_current_wave)
 		return waves[wave_str]
 	else:
 		return null	
@@ -48,17 +52,20 @@ func get_wave():
 func load_enemies():
 	_enemy_references['Goblin'] = preload(_goblin_path)
 	_enemy_references['Skeleton'] = preload(_skeleton_path)
+	_enemy_references['Ogre'] = preload(_ogre_path)
 	
 func spawn_mobs():
 	var wave = get_wave()
 	if wave == null:
 		return
-		
+	
+	$Doors/EntryDoor.animated_door.play('open_close')
+	await wait(0.5)
 	var _current_enemy = wave.spawns[randi() % wave.spawns.size()]
 	var mob = _enemy_references[_current_enemy].instantiate()
 	mob.type = _current_enemy
-	mob.target_position = $Exit_point.global_position
-	mob.global_position = $Start_point.global_position
+	mob.target_position = $Doors/Exit_point.global_position
+	mob.global_position = $Doors/Start_point.global_position
 	mob.global_scale = Vector2(0.6, 0.6)
 	$Enemies.add_child(mob)
 	_enemies_in_scene.append(mob)
@@ -84,7 +91,19 @@ func _on_spawn_mob_timeout():
 		$Spawn_mob.wait_time = next_wave.time_between
 		print("Next wave")
 		
-func add_coins(value):
+func add_coins(value, mob_type):
 	
 	_coins+=value
 	label.text= "Coins: " +str(_coins)
+	match (mob_type):
+		"Ogre":
+			_ogres_counter+=1
+			$Goblin_counter/Label.text=str(_ogres_counter)
+		"Skeleton":
+			_skeleton_counter+=1
+			$Skeleton_counter/Label.text=str(_skeleton_counter)
+		"trap":
+			pass
+
+func wait(seconds: float):
+	await get_tree().create_timer(seconds).timeout
