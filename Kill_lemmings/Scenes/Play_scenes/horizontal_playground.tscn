@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://gsq3tj08lm2v" path="res://Assets/Tilemaps/14-TileSets/Terrain (32x32).png" id="3_k4cyj"]
 [ext_resource type="PackedScene" uid="uid://bpux1831vpxi" path="res://Scenes/Traps/drop_slot.tscn" id="4_a20mv"]
 [ext_resource type="Texture2D" uid="uid://wq6ab1lg868u" path="res://Assets/Tilemaps/14-TileSets/Decorations (32x32).png" id="4_c5yfd"]
-[ext_resource type="PackedScene" uid="uid://h3c6r1t2q4yf" path="res://Scenes/UI/Door.tscn" id="10_jkkm0"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/Door.tscn" id="10_jkkm0"]
 [ext_resource type="FontFile" uid="uid://biwcuedcc8y4p" path="res://Assets/Sprites/brackeys_platformer_assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="10_mcwnt"]
 [ext_resource type="FontFile" uid="uid://c7qqwmyfx4cb1" path="res://Assets/Fonts/Orange Kid.otf" id="10_p668c"]
 [ext_resource type="PackedScene" uid="uid://dojfilffl8v7d" path="res://Scenes/UI/Goblin_counter.tscn" id="11_n38tx"]

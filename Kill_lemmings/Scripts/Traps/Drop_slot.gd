@@ -29,6 +29,8 @@ func _drop_data(_pos, data):
 func _process(delta):
 	if Global.dragging:
 		self.visible=true
+		if Input.is_action_just_released("click"):
+			Global.dragging=false
 	else:
 		self.visible=false
 		
