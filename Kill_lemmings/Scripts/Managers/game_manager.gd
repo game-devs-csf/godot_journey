@@ -7,6 +7,8 @@ var _enemy_references = {}
 var _enemies_in_scene = []
 var _current_step = 0
 var _current_wave = 1
+var _ogres_counter=0
+var _skeleton_counter=0
 var _coins=1500
 @onready var label = $Label
 
@@ -86,7 +88,16 @@ func _on_spawn_mob_timeout():
 		$Spawn_mob.wait_time = next_wave.time_between
 		print("Next wave")
 		
-func add_coins(value):
+func add_coins(value, mob_type):
 	
 	_coins+=value
 	label.text= "Coins: " +str(_coins)
+	match (mob_type):
+		"Ogre":
+			_ogres_counter+=1
+			$Goblin_counter/AnimatedSprite2D/Label.text=str(_ogres_counter)
+		"Skeleton":
+			_skeleton_counter+=1
+			$Skeleton_counter/AnimatedSprite2D/Label.text=str(_skeleton_counter)
+		"trap":
+			pass

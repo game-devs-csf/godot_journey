@@ -109,7 +109,7 @@ func take_damage(value : int) -> void:
 	mob_damaged.emit(hp)
 	if hp <= 0:
 		dead = true
-		$"..".get_parent().add_coins(5)
+		$"..".get_parent().add_coins(5,type)
 		mob_died.emit(name)
 
 func _on_mob_died(_name):

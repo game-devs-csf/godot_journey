@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://bletew1qah0ov"]
+
+[ext_resource type="Texture2D" uid="uid://b06e7pmofq73b" path="res://Assets/Sprites/Characters/Skeleton/Skeleton/Skeleton-Idle.png" id="1_ubiin"]
+[ext_resource type="FontFile" uid="uid://biwcuedcc8y4p" path="res://Assets/Sprites/brackeys_platformer_assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="2_2h477"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jptkh"]
+atlas = ExtResource("1_ubiin")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex757"]
+atlas = ExtResource("1_ubiin")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1krk"]
+atlas = ExtResource("1_ubiin")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cgg3"]
+atlas = ExtResource("1_ubiin")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egbim"]
+atlas = ExtResource("1_ubiin")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tigla"]
+atlas = ExtResource("1_ubiin")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jyfod"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jptkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex757")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1krk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cgg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egbim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tigla")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -1)
+scale = Vector2(1.86, 1.86)
+sprite_frames = SubResource("SpriteFrames_jyfod")
+autoplay = "default"
+frame_progress = 0.391179
+
+[node name="Label" type="Label" parent="AnimatedSprite2D"]
+offset_left = 26.3441
+offset_top = -8.06452
+offset_right = 38.3441
+offset_bottom = 7.93548
+theme_override_colors/font_color = Color(0.972549, 0.737255, 0.478431, 1)
+theme_override_fonts/font = ExtResource("2_2h477")
+text = "0"
+horizontal_alignment = 1
+autowrap_mode = 3
