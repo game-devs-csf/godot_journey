@@ -13,6 +13,7 @@ enum directions {Left, Right}
 @onready var _animated_sprite = $AnimatedSprite2D
 
 var mobs_entered = 0
+@onready var Manager= $"..".get_parent()
 
 signal mob_died
 signal mob_arrived
@@ -49,7 +50,7 @@ func _ready():
 	set_animation()
 	call_deferred("actor_setup")
 	mob_died.connect(_on_mob_died)
-	mob_arrived.connect($"..".get_parent()._on_mob_arrived)
+	mob_arrived.connect(Manager._on_mob_arrived)
 	mob_arrived.connect(_on_mob_arrived)
 	
 func _process(_delta):
@@ -110,14 +111,16 @@ func take_damage(value : int) -> void:
 	mob_damaged.emit(hp)
 	if hp <= 0:
 		dead = true
-		$"..".get_parent().add_coins(5,type)
+		Manager.add_coins(5,type)
 		mob_died.emit(name)
 
 func _on_mob_died(_name):
 	_current_state = state.Death
 	velocity = Vector2(0,0)
+	Manager._enemies_in_scene.erase(self)
 
 func _on_mob_arrived(_name):
 	await wait(0.75)	
 	queue_free()
-	print(mobs_entered)
+	Manager._mobs_entered+=1
+	print(str(Manager._mobs_entered))

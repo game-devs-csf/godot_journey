@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bvg5eg5jy3xp0"]
+[gd_scene load_steps=25 format=3 uid="uid://6hf360sarqa0"]
 
 [ext_resource type="Script" path="res://Scripts/UI/title.gd" id="1_dmvwy"]
 [ext_resource type="Texture2D" uid="uid://gsq3tj08lm2v" path="res://Assets/Tilemaps/14-TileSets/Terrain (32x32).png" id="1_jk6sr"]
