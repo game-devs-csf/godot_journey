@@ -12,6 +12,8 @@ enum directions {Left, Right}
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var _animated_sprite = $AnimatedSprite2D
 
+var mobs_entered = 0
+
 signal mob_died
 signal mob_arrived
 signal mob_damaged
@@ -118,4 +120,4 @@ func _on_mob_died(_name):
 func _on_mob_arrived(_name):
 	await wait(0.75)	
 	queue_free()
-	
+	print(mobs_entered)

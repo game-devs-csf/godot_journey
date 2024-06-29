@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bvg5eg5jy3xp0"]
+[gd_scene load_steps=25 format=3 uid="uid://bvg5eg5jy3xp0"]
 
 [ext_resource type="Script" path="res://Scripts/UI/title.gd" id="1_dmvwy"]
 [ext_resource type="Texture2D" uid="uid://gsq3tj08lm2v" path="res://Assets/Tilemaps/14-TileSets/Terrain (32x32).png" id="1_jk6sr"]
@@ -6,6 +6,7 @@
 [ext_resource type="StyleBox" uid="uid://cqoqpr25cxhap" path="res://Assets/Themes/button.tres" id="3_vnmuu"]
 [ext_resource type="Texture2D" uid="uid://b06e7pmofq73b" path="res://Assets/Sprites/Characters/Skeleton/Skeleton/Skeleton-Idle.png" id="4_p1uv2"]
 [ext_resource type="Texture2D" uid="uid://dnn53p4axdvxw" path="res://Assets/Sprites/Characters/Skeleton/Skeleton/Skeleton-Death.png" id="5_bh2bl"]
+[ext_resource type="AudioStream" uid="uid://lrfi4luvoiit" path="res://Assets/Music/title_music.mp3" id="7_tfdyg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uapei"]
 texture = ExtResource("1_jk6sr")
@@ -390,27 +391,16 @@ texture = ExtResource("1_jk6sr")
 sources/0 = SubResource("TileSetAtlasSource_uapei")
 
 [sub_resource type="Theme" id="Theme_w86al"]
+Button/colors/font_color = Color(0.847059, 0.392157, 0.282353, 1)
+Button/colors/font_focus_color = Color(0.847059, 0.392157, 0.282353, 1)
+Button/colors/font_hover_color = Color(0.955922, 0.649534, 0.572011, 1)
+Button/colors/font_hover_pressed_color = Color(0.616526, 0.251311, 0.163424, 1)
 Button/fonts/font = ExtResource("2_m2dgv")
 Button/styles/disabled = ExtResource("3_vnmuu")
 Button/styles/focus = ExtResource("3_vnmuu")
 Button/styles/hover = ExtResource("3_vnmuu")
 Button/styles/normal = ExtResource("3_vnmuu")
 Button/styles/pressed = ExtResource("3_vnmuu")
-
-[sub_resource type="Animation" id="Animation_jniy5"]
-resource_name = "Title_Animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Title:visible_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 0.5, 1.0]
-}
 
 [sub_resource type="Animation" id="Animation_ahj5u"]
 length = 0.001
@@ -425,6 +415,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_jniy5"]
+resource_name = "Title_Animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_71epg"]
@@ -517,6 +522,7 @@ animations = [{
 }]
 
 [node name="Title" type="Node2D"]
+position = Vector2(0, -2)
 script = ExtResource("1_dmvwy")
 
 [node name="Background" type="TileMap" parent="."]
@@ -583,5 +589,10 @@ animation = &"play"
 autoplay = "default"
 frame = 3
 frame_progress = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_tfdyg")
+volume_db = -33.63
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

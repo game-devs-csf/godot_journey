@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dwum5yhucxkwl"]
+[gd_scene load_steps=35 format=3 uid="uid://dwum5yhucxkwl"]
 
 [ext_resource type="TileSet" uid="uid://ibj4j60f70wc" path="res://Assets/Tilemaps/placeholder.tres" id="1_c8kf4"]
 [ext_resource type="Script" path="res://Scripts/Managers/game_manager.gd" id="1_r4xys"]
@@ -9,8 +9,11 @@
 [ext_resource type="PackedScene" path="res://Scenes/UI/Door.tscn" id="10_jkkm0"]
 [ext_resource type="FontFile" uid="uid://biwcuedcc8y4p" path="res://Assets/Sprites/brackeys_platformer_assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="10_mcwnt"]
 [ext_resource type="FontFile" uid="uid://c7qqwmyfx4cb1" path="res://Assets/Fonts/Orange Kid.otf" id="10_p668c"]
-[ext_resource type="PackedScene" uid="uid://dojfilffl8v7d" path="res://Scenes/UI/Goblin_counter.tscn" id="11_n38tx"]
-[ext_resource type="PackedScene" uid="uid://bletew1qah0ov" path="res://Scenes/UI/Skeleton_counter.tscn" id="11_wfnpc"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/Goblin_counter.tscn" id="11_n38tx"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/Skeleton_counter.tscn" id="11_wfnpc"]
+[ext_resource type="AudioStream" uid="uid://cmr5ois1fwg5o" path="res://Assets/Music/lemmings_music.mp3" id="12_j5nlr"]
+[ext_resource type="StyleBox" uid="uid://cqoqpr25cxhap" path="res://Assets/Themes/button.tres" id="13_hfw4b"]
+[ext_resource type="FontFile" uid="uid://bdngcekdpeieq" path="res://Assets/Sprites/brackeys_platformer_assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="14_3sqyf"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0uqi7"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -1766,6 +1769,18 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 [sub_resource type="Theme" id="Theme_g10hy"]
 Label/fonts/font = ExtResource("10_p668c")
 
+[sub_resource type="Theme" id="Theme_2dytn"]
+Button/colors/font_color = Color(0.682353, 0.266667, 0.305882, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.682353, 0.266667, 0.305882, 1)
+Button/colors/font_hover_color = Color(0.921333, 0.563871, 0.577999, 1)
+Button/colors/font_hover_pressed_color = Color(0.489917, 0.173802, 0.205536, 1)
+Button/styles/disabled = ExtResource("13_hfw4b")
+Button/styles/focus = ExtResource("13_hfw4b")
+Button/styles/hover = ExtResource("13_hfw4b")
+Button/styles/normal = ExtResource("13_hfw4b")
+Button/styles/pressed = ExtResource("13_hfw4b")
+
 [node name="HorizontalPlayground" type="Node2D"]
 script = ExtResource("1_r4xys")
 
@@ -2185,4 +2200,23 @@ position = Vector2(246, 570)
 
 [node name="Enemies" type="Node2D" parent="."]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_j5nlr")
+volume_db = -32.944
+autoplay = true
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Button" type="Button" parent="Node2D"]
+offset_left = 40.0
+offset_top = 574.0
+offset_right = 106.0
+offset_bottom = 596.0
+scale = Vector2(1.27982, 1.67463)
+theme = SubResource("Theme_2dytn")
+theme_override_fonts/font = ExtResource("14_3sqyf")
+text = "EXIT
+"
+
 [connection signal="timeout" from="Spawn_mob" to="." method="_on_spawn_mob_timeout"]
+[connection signal="pressed" from="Node2D/Button" to="." method="_on_button_pressed"]
