@@ -10,6 +10,7 @@ var _current_wave = 1
 var _ogres_counter=0
 var _skeleton_counter=0
 var _coins=1500
+
 @onready var label = $Label
 
 const waves = {
@@ -36,10 +37,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
-		
-func _on_mob_died(_name):
-	#_enemies_in_scene = _enemies_in_scene.filter(func(mob): return mob.name != _name)
-	pass
+	
+func _on_mob_arrived(_name):
+	$Doors/ExitDoor.animated_door.play('open_close')
 	
 func get_wave():
 	var wave_str = "wave_%s" % _current_wave
@@ -57,12 +57,14 @@ func spawn_mobs():
 	var wave = get_wave()
 	if wave == null:
 		return
-		
+	
+	$Doors/EntryDoor.animated_door.play('open_close')
+	await wait(0.5)
 	var _current_enemy = wave.spawns[randi() % wave.spawns.size()]
 	var mob = _enemy_references[_current_enemy].instantiate()
 	mob.type = _current_enemy
-	mob.target_position = $Exit_point.global_position
-	mob.global_position = $Start_point.global_position
+	mob.target_position = $Doors/Exit_point.global_position
+	mob.global_position = $Doors/Start_point.global_position
 	mob.global_scale = Vector2(0.6, 0.6)
 	$Enemies.add_child(mob)
 	_enemies_in_scene.append(mob)
@@ -101,3 +103,6 @@ func add_coins(value, mob_type):
 			$Skeleton_counter/AnimatedSprite2D/Label.text=str(_skeleton_counter)
 		"trap":
 			pass
+
+func wait(seconds: float):
+	await get_tree().create_timer(seconds).timeout
