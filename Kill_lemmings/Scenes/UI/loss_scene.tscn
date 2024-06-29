@@ -1,15 +1,14 @@
-[gd_scene load_steps=26 format=3 uid="uid://bvg5eg5jy3xp0"]
+[gd_scene load_steps=18 format=3 uid="uid://cn1huc5sccy3x"]
 
-[ext_resource type="Script" path="res://Scripts/UI/title.gd" id="1_dmvwy"]
-[ext_resource type="Texture2D" uid="uid://gsq3tj08lm2v" path="res://Assets/Tilemaps/14-TileSets/Terrain (32x32).png" id="1_jk6sr"]
-[ext_resource type="FontFile" uid="uid://bdngcekdpeieq" path="res://Assets/Sprites/brackeys_platformer_assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="2_m2dgv"]
-[ext_resource type="StyleBox" uid="uid://cqoqpr25cxhap" path="res://Assets/Themes/button.tres" id="3_vnmuu"]
-[ext_resource type="Texture2D" uid="uid://b06e7pmofq73b" path="res://Assets/Sprites/Characters/Skeleton/Skeleton/Skeleton-Idle.png" id="4_p1uv2"]
-[ext_resource type="Texture2D" uid="uid://dnn53p4axdvxw" path="res://Assets/Sprites/Characters/Skeleton/Skeleton/Skeleton-Death.png" id="5_bh2bl"]
-[ext_resource type="AudioStream" uid="uid://lrfi4luvoiit" path="res://Assets/Music/title_music.mp3" id="7_tfdyg"]
+[ext_resource type="Script" path="res://Scripts/UI/loss_scene.gd" id="1_wnmjj"]
+[ext_resource type="Texture2D" uid="uid://gsq3tj08lm2v" path="res://Assets/Tilemaps/14-TileSets/Terrain (32x32).png" id="2_ph8ge"]
+[ext_resource type="FontFile" uid="uid://bdngcekdpeieq" path="res://Assets/Sprites/brackeys_platformer_assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="3_g36ap"]
+[ext_resource type="StyleBox" uid="uid://cqoqpr25cxhap" path="res://Assets/Themes/button.tres" id="4_q3e5v"]
+[ext_resource type="Texture2D" uid="uid://c6pqjdqt8ytoj" path="res://Assets/Sprites/Characters/Armored Orc/Armored Orc/Armored Orc-Death.png" id="5_yt8ka"]
+[ext_resource type="AudioStream" uid="uid://lrfi4luvoiit" path="res://Assets/Music/title_music.mp3" id="8_gfca5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uapei"]
-texture = ExtResource("1_jk6sr")
+texture = ExtResource("2_ph8ge")
 2:2/0 = 0
 3:2/0 = 0
 4:2/0 = 0
@@ -395,15 +394,14 @@ Button/colors/font_color = Color(0.847059, 0.392157, 0.282353, 1)
 Button/colors/font_focus_color = Color(0.847059, 0.392157, 0.282353, 1)
 Button/colors/font_hover_color = Color(0.955922, 0.649534, 0.572011, 1)
 Button/colors/font_hover_pressed_color = Color(0.616526, 0.251311, 0.163424, 1)
-Button/fonts/font = ExtResource("2_m2dgv")
-Button/styles/disabled = ExtResource("3_vnmuu")
-Button/styles/focus = ExtResource("3_vnmuu")
-Button/styles/hover = ExtResource("3_vnmuu")
-Button/styles/normal = ExtResource("3_vnmuu")
-Button/styles/pressed = ExtResource("3_vnmuu")
+Button/fonts/font = ExtResource("3_g36ap")
+Button/styles/disabled = ExtResource("4_q3e5v")
+Button/styles/focus = ExtResource("4_q3e5v")
+Button/styles/hover = ExtResource("4_q3e5v")
+Button/styles/normal = ExtResource("4_q3e5v")
+Button/styles/pressed = ExtResource("4_q3e5v")
 
 [sub_resource type="Animation" id="Animation_ahj5u"]
-resource_name = "Start"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -433,114 +431,51 @@ tracks/0/keys = {
 "values": [0.0, 0.5, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_s2rl4"]
-resource_name = "type"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Title:visible_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 0.5, 1.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_71epg"]
 _data = {
-"Start": SubResource("Animation_ahj5u"),
-"Title_Animation": SubResource("Animation_jniy5"),
-"type": SubResource("Animation_s2rl4")
+"RESET": SubResource("Animation_ahj5u"),
+"Title_Animation": SubResource("Animation_jniy5")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3yoyq"]
-atlas = ExtResource("4_p1uv2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgyaa"]
+atlas = ExtResource("5_yt8ka")
 region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tpb5m"]
-atlas = ExtResource("4_p1uv2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_25pm2"]
+atlas = ExtResource("5_yt8ka")
 region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gnump"]
-atlas = ExtResource("4_p1uv2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fam7s"]
+atlas = ExtResource("5_yt8ka")
 region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3v8qq"]
-atlas = ExtResource("4_p1uv2")
-region = Rect2(300, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2kakx"]
-atlas = ExtResource("4_p1uv2")
-region = Rect2(400, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_88i3o"]
-atlas = ExtResource("4_p1uv2")
-region = Rect2(500, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aye2y"]
-atlas = ExtResource("5_bh2bl")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gf38v"]
-atlas = ExtResource("5_bh2bl")
-region = Rect2(100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sfb6m"]
-atlas = ExtResource("5_bh2bl")
-region = Rect2(200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cvwux"]
-atlas = ExtResource("5_bh2bl")
+[sub_resource type="AtlasTexture" id="AtlasTexture_akgmw"]
+atlas = ExtResource("5_yt8ka")
 region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n0gsd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3yoyq")
+"texture": SubResource("AtlasTexture_xgyaa")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tpb5m")
+"texture": SubResource("AtlasTexture_25pm2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gnump")
+"texture": SubResource("AtlasTexture_fam7s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3v8qq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2kakx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_88i3o")
-}],
-"loop": true,
-"name": &"default",
-"speed": 7.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aye2y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gf38v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sfb6m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cvwux")
+"texture": SubResource("AtlasTexture_akgmw")
 }],
 "loop": false,
-"name": &"play",
+"name": &"death",
 "speed": 7.0
 }]
 
-[node name="Title" type="Node2D"]
+[node name="Loss" type="Node2D"]
 position = Vector2(0, -2)
-script = ExtResource("1_dmvwy")
+script = ExtResource("1_wnmjj")
 
 [node name="Background" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_xg6fh")
@@ -572,40 +507,44 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -39.9533
-offset_top = -3.91566
-offset_right = 40.0467
-offset_bottom = 26.0843
+offset_left = -42.2897
+offset_top = -4.81928
+offset_right = 69.7103
+offset_bottom = 25.1807
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.683859, 1.01418)
+scale = Vector2(0.562363, 1.01418)
 theme = SubResource("Theme_w86al")
-text = "PLAY"
+text = "RESTART"
 
 [node name="Node2D" type="Node2D" parent="CanvasLayer"]
 
 [node name="Title" type="Label" parent="CanvasLayer/Node2D"]
 offset_left = -102.336
-offset_top = -78.012
+offset_top = -79.3675
 offset_right = 137.664
-offset_bottom = -55.012
+offset_bottom = -56.3675
 scale = Vector2(0.77997, 1)
-theme_override_fonts/font = ExtResource("2_m2dgv")
-text = "TRAPS & TROUBLES"
+theme_override_fonts/font = ExtResource("3_g36ap")
+text = "YOU LOSE!"
+horizontal_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Node2D"]
+[node name="TypeAnimation" type="AnimationPlayer" parent="CanvasLayer/Node2D"]
 libraries = {
 "": SubResource("AnimationLibrary_71epg")
 }
 
-[node name="skeleton" type="AnimatedSprite2D" parent="."]
-position = Vector2(552, 380)
+[node name="ogre" type="AnimatedSprite2D" parent="."]
+position = Vector2(572, 375)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_n0gsd")
-autoplay = "default"
+animation = &"death"
+autoplay = "death"
+frame = 3
+frame_progress = 1.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_tfdyg")
+stream = ExtResource("8_gfca5")
 volume_db = -33.63
 autoplay = true
 
